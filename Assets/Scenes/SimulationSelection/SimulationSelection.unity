@@ -1730,6 +1730,7 @@ GameObject:
   - component: {fileID: 1330946572}
   - component: {fileID: 1330946574}
   - component: {fileID: 1330946573}
+  - component: {fileID: 1330946576}
   m_Layer: 5
   m_Name: CollisionsPanel
   m_TagString: Untagged
@@ -1799,7 +1800,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1330946571}
   m_CullTransparentMesh: 1
+--- !u!114 &1330946576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1330946571}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f42409aad290ab4cb73fa282ca6b51f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hovering: 0
 --- !u!1 &1330959003
 GameObject:
   m_ObjectHideFlags: 0
