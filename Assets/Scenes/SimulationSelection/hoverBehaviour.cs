@@ -21,8 +21,7 @@ public class hoverBehaviour : MonoBehaviour
     // Check if mouse is hovering over panel, and update `hovering` accordingly.
     void checkForHover()
     {
-        Event currentEvent = Event.current;
-        Vector2 mousePosition = currentEvent.mousePosition;
+        Vector2 mousePosition = Input.mousePosition;
 
         Debug.Log($"Mouse information: X={mousePosition.x} Y={mousePosition.y}");
     }
