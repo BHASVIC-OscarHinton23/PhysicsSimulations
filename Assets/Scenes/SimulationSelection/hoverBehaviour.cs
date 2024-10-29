@@ -34,9 +34,12 @@ public class hoverBehaviour : MonoBehaviour
         // If either are negative, the mouse is DEFINITELY not inside the window's boundaries
         // If mouse.X > window width, the mouse is outside.
         // Likewise with mouse.Y > window height
-        if (mousePosition.x < 0 || mousePosition.y < 0 || mousePosition.x > windowWidth || mousePosition.y > windowHeight)
+        bool withinScreenX = mousePosition.x > 0 && mousePosition.x < windowWidth;
+        bool withinScreenY = mousePosition.y > 0 && mousePosition.y < windowHeight;
+
+        if (!(withinScreenX && withinScreenY))
         {
-            //Debug.Log("Outside");
+            Debug.Log("Outside");
             // Can just return here, no need to set hovering to false.
             // (they can't just stop hovering and move the mouse that far, that quickly)
             return;
