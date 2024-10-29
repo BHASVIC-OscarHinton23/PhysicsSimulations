@@ -27,9 +27,8 @@ public class hoverBehaviour : MonoBehaviour
         Vector2 mousePosition = Input.mousePosition;
 
         // Information about the program's window
-        DisplayInfo info = Screen.mainWindowDisplayInfo;
-        int windowHeight = info.height;
-        int windowWidth = info.width;
+        int windowHeight = Screen.height;
+        int windowWidth = Screen.width;
 
         // Checks for if the mouse is outside of the window area
         // If either are negative, the mouse is DEFINITELY not inside the window's boundaries
@@ -44,6 +43,8 @@ public class hoverBehaviour : MonoBehaviour
         }
         Debug.Log("Inside");
         
-        //Debug.Log($"Mouse information: X={mousePosition.x} Y={mousePosition.y}");
+        Debug.Log($"Mouse information: X={mousePosition.x} Y={mousePosition.y}");
+        Debug.Log($"Screen information: X={windowWidth} Y={windowHeight}");
+
     }
 }
