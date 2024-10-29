@@ -172,6 +172,7 @@ GameObject:
   - component: {fileID: 213414849}
   - component: {fileID: 213414851}
   - component: {fileID: 213414850}
+  - component: {fileID: 213414852}
   m_Layer: 5
   m_Name: CircularMotionPanel
   m_TagString: Untagged
@@ -241,6 +242,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 213414848}
   m_CullTransparentMesh: 1
+--- !u!114 &213414852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 213414848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f42409aad290ab4cb73fa282ca6b51f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hovering: 0
+  maxScaleFactor: 1.2
+  scaleFactorIntervalPercentage: 5
+  numberOfIntervals: 0
+  initialScale: {x: 0, y: 0, z: 0}
+  maximumScale: {x: 0, y: 0, z: 0}
+  scaleDifference: {x: 0, y: 0, z: 0}
 --- !u!1 &255392473
 GameObject:
   m_ObjectHideFlags: 0
@@ -395,6 +415,7 @@ GameObject:
   - component: {fileID: 361650183}
   - component: {fileID: 361650185}
   - component: {fileID: 361650184}
+  - component: {fileID: 361650186}
   m_Layer: 5
   m_Name: ProjectileMotionPanel
   m_TagString: Untagged
@@ -464,6 +485,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 361650182}
   m_CullTransparentMesh: 1
+--- !u!114 &361650186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 361650182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f42409aad290ab4cb73fa282ca6b51f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hovering: 0
+  maxScaleFactor: 1.2
+  scaleFactorIntervalPercentage: 5
+  numberOfIntervals: 0
+  initialScale: {x: 0, y: 0, z: 0}
+  maximumScale: {x: 0, y: 0, z: 0}
+  scaleDifference: {x: 0, y: 0, z: 0}
 --- !u!1 &436666132
 GameObject:
   m_ObjectHideFlags: 0
@@ -1271,6 +1311,7 @@ GameObject:
   - component: {fileID: 863007755}
   - component: {fileID: 863007757}
   - component: {fileID: 863007756}
+  - component: {fileID: 863007758}
   m_Layer: 5
   m_Name: ReflectionRefractionPanel
   m_TagString: Untagged
@@ -1340,6 +1381,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 863007754}
   m_CullTransparentMesh: 1
+--- !u!114 &863007758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 863007754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f42409aad290ab4cb73fa282ca6b51f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hovering: 0
+  maxScaleFactor: 1.2
+  scaleFactorIntervalPercentage: 5
+  numberOfIntervals: 0
+  initialScale: {x: 0, y: 0, z: 0}
+  maximumScale: {x: 0, y: 0, z: 0}
+  scaleDifference: {x: 0, y: 0, z: 0}
 --- !u!1 &1002488663
 GameObject:
   m_ObjectHideFlags: 0
@@ -1813,10 +1873,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hovering: 0
-  scaleFactor: 1
   maxScaleFactor: 1.2
-  scaleFactorIntervalPercentage: 0.0001
-  scale: {x: 0, y: 0, z: 0}
+  scaleFactorIntervalPercentage: 5
+  numberOfIntervals: 0
+  initialScale: {x: 0, y: 0, z: 0}
+  maximumScale: {x: 0, y: 0, z: 0}
+  scaleDifference: {x: 0, y: 0, z: 0}
 --- !u!1 &1330959003
 GameObject:
   m_ObjectHideFlags: 0
