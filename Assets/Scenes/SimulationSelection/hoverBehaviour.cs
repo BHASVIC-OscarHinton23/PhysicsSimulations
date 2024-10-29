@@ -39,15 +39,10 @@ public class hoverBehaviour : MonoBehaviour
 
         if (!(withinScreenX && withinScreenY))
         {
-            Debug.Log("Outside");
             // Can just return here, no need to set hovering to false.
             // (they can't just stop hovering and move the mouse that far, that quickly)
             return;
         }
-        //Debug.Log("Inside");
-
-        //Debug.Log($"Mouse information: X={mousePosition.x} Y={mousePosition.y}");
-        //Debug.Log($"Screen information: X={windowWidth} Y={windowHeight}");
 
         // Get rect height and width of panel
         RectTransform rectTransform = this.GetComponent<RectTransform>();
@@ -73,24 +68,12 @@ public class hoverBehaviour : MonoBehaviour
         if (inXRange && inYRange)
         {
             // Over the panel!
-            //Debug.Log("Hovering over panel/");
-
             hovering = true;
         }
         else
         {
             // NOT over the panel!
-            //Debug.Log("Not hovering over panel.");
             hovering = false;
         }
-
-        //Debug.Log($"In X range: {inXRange}");
-        //Debug.Log($"In Y range: {inYRange}");
-
-
-        //Debug.Log($"Top-left: ({topLeft.x},{topLeft.y})");
-        //Debug.Log($"Top-right: ({topRight.x},{topRight.y})");
-        //Debug.Log($"Bottom-left: ({bottomLeft.x},{bottomLeft.y})");
-        //Debug.Log($"Bottom-right: ({bottomRight.x},{bottomRight.y})");
     }
 }
