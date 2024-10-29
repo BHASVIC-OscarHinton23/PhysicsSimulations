@@ -1,13 +1,8 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Reflection;
 using UnityEngine;
 
 public class hoverBehaviour : MonoBehaviour
 {
     public bool hovering;
-    public float scaleFactor = 1;
     public float maxScaleFactor = 2;
     public int scaleFactorIntervalPercentage = 10; // Change by 10% each update
     public int numberOfIntervals = 0; // Keep track of current number of intervals scaled by
@@ -99,30 +94,28 @@ public class hoverBehaviour : MonoBehaviour
     }
     void growInSize()
     {
-        if (this.scaleFactor >= this.maxScaleFactor)
+        if (this.numberOfIntervals >= 100/scaleFactorIntervalPercentage)
         {
-            // Current scale factor is equal to the maximum allowed
-            this.scaleFactor = this.maxScaleFactor;
+            // Currently at maximum scale
+            this.transform.localScale = this.maximumScale;
             return;
         }
 
-        this.scaleFactor += this.scaleFactorInterval;
-
+        this.numberOfIntervals++;
         changeScale();
     }
 
     void shrinkInSize()
     {
-        if (this.scaleFactor <= 1)
+        if (this.numberOfIntervals <= 0)
         {
-            // If scale factor is below 1, the panel shrinks below the normal size
-            this.scaleFactor = 1;
-            
+            // Either no scaling, or negative
+            // Regardless, is at the minimum scale
+            this.transform.localScale = this.initialScale;
             return;
         }
 
-        this.scaleFactor -= this.scaleFactorInterval;
-
+        this.numberOfIntervals--;
         changeScale();
     }
 
@@ -130,8 +123,8 @@ public class hoverBehaviour : MonoBehaviour
     {
         // Find how much to scale by on x and y axis
         Vector3 scaleBy = this.initialScale;
-        scaleBy.x += scaleDifference.x * (scaleFactorIntervalPercentage/100) * numberOfIntervals;
-        scaleBy.y += scaleDifference.y * (scaleFactorIntervalPercentage / 100) * numberOfIntervals;
+        scaleBy.x += (float)(scaleDifference.x * (float)(scaleFactorIntervalPercentage/100f) * numberOfIntervals);
+        scaleBy.y += (float)(scaleDifference.y * (float)(scaleFactorIntervalPercentage/100f) * numberOfIntervals);
 
         // Reset scale, and then scale properly
         this.transform.localScale = this.initialScale;
