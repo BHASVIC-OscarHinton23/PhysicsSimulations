@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class hoverBehaviour : MonoBehaviour
+public class scaleOnHover : MonoBehaviour
 {
     public bool hovering;
-    public float maxScaleFactor = 2;
-    public int scaleFactorIntervalPercentage = 10; // Change by 10% each update
+    public float maxScaleFactor = 1.2f;
+    public int scaleFactorIntervalPercentage = 5; // Change by 10% each update
     public int numberOfIntervals = 0; // Keep track of current number of intervals scaled by
 
     public Vector3 initialScale;
