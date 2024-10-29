@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
@@ -6,17 +7,37 @@ using UnityEngine;
 public class hoverBehaviour : MonoBehaviour
 {
     public bool hovering;
+    public float scaleFactor = 1;
+    public float maxScaleFactor = 2;
+    public int scaleFactorIntervalPercentage = 10; // Change by 10% each update
+    public int numberOfIntervals = 0; // Keep track of current number of intervals scaled by
+
+    public Vector3 initialScale;
+    public Vector3 maximumScale;
+    public Vector3 scaleDifference;
 
     // Start is called before the first frame update
     void Start()
     {
         hovering = false;
+        this.initialScale = this.transform.localScale;
+        this.maximumScale = this.initialScale * maxScaleFactor;
+        this.scaleDifference = this.maximumScale - this.initialScale;
     }
 
     // Update is called once per frame
     void Update()
     {
         checkForHover();
+
+        if (hovering)
+        {
+            growInSize();
+        }
+        else
+        {
+            shrinkInSize();
+        }
     }
 
     // Check if mouse is hovering over panel, and update `hovering` accordingly.
@@ -76,4 +97,45 @@ public class hoverBehaviour : MonoBehaviour
             hovering = false;
         }
     }
+    void growInSize()
+    {
+        if (this.scaleFactor >= this.maxScaleFactor)
+        {
+            // Current scale factor is equal to the maximum allowed
+            this.scaleFactor = this.maxScaleFactor;
+            return;
+        }
+
+        this.scaleFactor += this.scaleFactorInterval;
+
+        changeScale();
+    }
+
+    void shrinkInSize()
+    {
+        if (this.scaleFactor <= 1)
+        {
+            // If scale factor is below 1, the panel shrinks below the normal size
+            this.scaleFactor = 1;
+            
+            return;
+        }
+
+        this.scaleFactor -= this.scaleFactorInterval;
+
+        changeScale();
+    }
+
+    void changeScale()
+    {
+        // Find how much to scale by on x and y axis
+        Vector3 scaleBy = this.initialScale;
+        scaleBy.x += scaleDifference.x * (scaleFactorIntervalPercentage/100) * numberOfIntervals;
+        scaleBy.y += scaleDifference.y * (scaleFactorIntervalPercentage / 100) * numberOfIntervals;
+
+        // Reset scale, and then scale properly
+        this.transform.localScale = this.initialScale;
+        this.transform.localScale = new Vector3(scaleBy.x, scaleBy.y, 1);
+    }
+
 }

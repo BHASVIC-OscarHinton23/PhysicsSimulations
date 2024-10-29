@@ -892,7 +892,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 1264922495}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -1813,6 +1813,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hovering: 0
+  scaleFactor: 1
+  maxScaleFactor: 1.2
+  scaleFactorIntervalPercentage: 0.0001
+  scale: {x: 0, y: 0, z: 0}
 --- !u!1 &1330959003
 GameObject:
   m_ObjectHideFlags: 0
