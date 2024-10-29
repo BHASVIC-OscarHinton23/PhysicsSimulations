@@ -43,17 +43,17 @@ public class hoverBehaviour : MonoBehaviour
         }
         //Debug.Log("Inside");
 
-        Debug.Log($"Mouse information: X={mousePosition.x} Y={mousePosition.y}");
+        //Debug.Log($"Mouse information: X={mousePosition.x} Y={mousePosition.y}");
         //Debug.Log($"Screen information: X={windowWidth} Y={windowHeight}");
 
         // Get rect height and width of panel
         RectTransform rectTransform = this.GetComponent<RectTransform>();
-        Rect rect = rectTransform.rect;
 
-        // Unlike the screen information, this is relative to the GameObject's RectTransform anchor points
-        // To get the position on the scene, we have to subtract the anchor points' X and Y coordinates.
-        // https://docs.unity3d.com/ScriptReference/Rect.html
-        // https://docs.unity3d.com/Packages/com.unity.ugui@1.0/manual/class-RectTransform.html
+        // Unlike the screen information, this is relative to the RectTransform anchor points
+        // To get the position on the scene, use GetWorldCorners to get the corners of the rect in world space
+        // These coordinates are also where that point is on the screen, giving us the corner locations
+        // https://docs.unity3d.com/ScriptReference/RectTransform.html
+        // https://docs.unity3d.com/ScriptReference/RectTransform.GetWorldCorners.html
 
         Vector3[] corners = new Vector3[4];
         rectTransform.GetWorldCorners(corners);
@@ -62,19 +62,32 @@ public class hoverBehaviour : MonoBehaviour
         Vector2 topLeft = corners[1];
         Vector2 topRight = corners[2];
         Vector2 bottomRight = corners[3];
-        
-        
-        //Vector2 topLeft = new Vector2(rect.xMin - rectTransform.anchorMin.x, rect.yMin - rectTransform.anchorMax.y);
-        //Vector2 topRight = new Vector2(rect.xMax - rectTransform.anchorMax.x, rect.yMin - rectTransform.anchorMax.y);
-        //Vector2 bottomLeft = new Vector2(rect.xMin - rectTransform.anchorMin.x, rect.yMax - rectTransform.anchorMin.y);
-        //Vector2 bottomRight = new Vector2(rect.xMax - rectTransform.anchorMax.x, rect.yMax - rectTransform.anchorMax.y);
 
-        //Debug.Log($"Anchor max: ({rectTransform.anchorMax.x},{rectTransform.anchorMax.y})");
-        //Debug.Log($"Anchor max: ({rectTransform.anchorMin.x},{rectTransform.anchorMin.y})");
+        // Like before, check if mouse is over panel by comparing coordinates of corners and mouse
+        bool inXRange = mousePosition.x > topLeft.x && mousePosition.x < topRight.x;
+        bool inYRange = mousePosition.y < topLeft.y && mousePosition.y > bottomLeft.y;
+        
+        if (inXRange && inYRange)
+        {
+            // Over the panel!
+            //Debug.Log("Hovering over panel/");
 
-        Debug.Log($"Top-left: ({topLeft.x},{topLeft.y})");
-        Debug.Log($"Top-right: ({topRight.x},{topRight.y})");
-        Debug.Log($"Bottom-left: ({bottomLeft.x},{bottomLeft.y})");
-        Debug.Log($"Bottom-right: ({bottomRight.x},{bottomRight.y})");
+            hovering = true;
+        }
+        else
+        {
+            // NOT over the panel!
+            //Debug.Log("Not hovering over panel.");
+            hovering = false;
+        }
+
+        //Debug.Log($"In X range: {inXRange}");
+        //Debug.Log($"In Y range: {inYRange}");
+
+
+        //Debug.Log($"Top-left: ({topLeft.x},{topLeft.y})");
+        //Debug.Log($"Top-right: ({topRight.x},{topRight.y})");
+        //Debug.Log($"Bottom-left: ({bottomLeft.x},{bottomLeft.y})");
+        //Debug.Log($"Bottom-right: ({bottomRight.x},{bottomRight.y})");
     }
 }
