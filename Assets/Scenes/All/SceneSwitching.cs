@@ -10,4 +10,10 @@ public class SceneSwitching : MonoBehaviour
         Debug.Log("Switching scene: Settings");
         SceneManager.LoadScene("Settings");
     }
+
+    public void changeToTemplateSimulation()
+    {
+        Debug.Log("Switching scene: TemplateSimulation");
+        SceneManager.LoadScene("TemplateSimulation");
+    }
 }
