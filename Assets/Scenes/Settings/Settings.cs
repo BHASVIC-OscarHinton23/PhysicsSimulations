@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using UnityEditor.U2D.Aseprite;
+using System.IO;
 using UnityEngine;
-using UnityEngine.Rendering;
+using Newtonsoft.Json; 
 
 public class Settings : MonoBehaviour
 {
@@ -24,7 +21,34 @@ public class Settings : MonoBehaviour
     { }
 
     public Settings loadSettings()
-    { }
+    {
+        Settings settings;
+        string settingsString;
+
+        // Open file, read, close
+        if (File.Exists("settings.json"))
+        {
+            StreamReader settingsStream = new StreamReader("settings.json");
+            settingsString = settingsStream.ReadToEnd();
+            settingsStream.Close();
+        }
+        else
+        {
+            settingsString = "a";
+        }
+
+        try
+        {
+            settings = JsonConvert.DeserializeObject<Settings>(settingsString);
+        }
+        catch (JsonException)
+        {
+
+        }
+
+
+
+    }
 
     #region Getters
     public ProgramSettings getProgramSettings()
