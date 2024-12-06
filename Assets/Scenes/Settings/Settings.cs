@@ -20,7 +20,7 @@ public class Settings : MonoBehaviour
     public void saveSettings()
     { }
 
-    public Settings loadSettings()
+    public void loadSettings()
     {
         Settings settings;
         string settingsString;
@@ -41,11 +41,12 @@ public class Settings : MonoBehaviour
         {
             settings = JsonConvert.DeserializeObject<Settings>(settingsString);
         }
-        catch (JsonException)
+        catch (JsonException e)
         {
-
+            Debug.LogError($"Some sort of exception: {e}");
         }
 
+        return; new Settings();
 
 
     }
