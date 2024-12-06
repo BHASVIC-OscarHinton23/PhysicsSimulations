@@ -20,6 +20,6 @@ public class SceneSwitching : MonoBehaviour
     public void changeToTemplateSimulation()
     {
         Debug.Log("Switching scene: TemplateSimulation");
-        SceneManager.LoadScene("TemplateSimulation");
+        SceneManager.LoadScene("template");
     }
 }
