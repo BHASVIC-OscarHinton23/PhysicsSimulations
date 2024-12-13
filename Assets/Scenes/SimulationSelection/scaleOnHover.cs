@@ -11,6 +11,8 @@ public class scaleOnHover : MonoBehaviour
     public Vector3 maximumScale;
     public Vector3 scaleDifference;
 
+    public Camera cam;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -72,10 +74,10 @@ public class scaleOnHover : MonoBehaviour
         Vector3[] corners = new Vector3[4];
         rectTransform.GetWorldCorners(corners);
 
-        Vector2 bottomLeft = corners[0];
-        Vector2 topLeft = corners[1];
-        Vector2 topRight = corners[2];
-        Vector2 bottomRight = corners[3];
+        Vector2 bottomLeft = cam.WorldToScreenPoint(corners[0]);
+        Vector2 topLeft = cam.WorldToScreenPoint(corners[1]);
+        Vector2 topRight = cam.WorldToScreenPoint(corners[2]);
+        Vector2 bottomRight = cam.WorldToScreenPoint(corners[3]);
 
         // Like before, check if mouse is over panel by comparing coordinates of corners and mouse
         bool inXRange = mousePosition.x > topLeft.x && mousePosition.x < topRight.x;
@@ -91,6 +93,8 @@ public class scaleOnHover : MonoBehaviour
             // NOT over the panel!
             hovering = false;
         }
+
+        Debug.Log($"Pos({mousePosition.x},{mousePosition.y}) Range([{topLeft.x},{topRight.x}],[{topLeft.y},{bottomLeft.y}]) Hov:{hovering}");
     }
     void growInSize()
     {
