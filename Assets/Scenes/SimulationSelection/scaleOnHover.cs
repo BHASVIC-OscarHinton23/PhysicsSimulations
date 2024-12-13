@@ -79,7 +79,7 @@ public class scaleOnHover : MonoBehaviour
         
         rectTransform.GetWorldCorners(corners);
 
-        if (GetComponentInParent<Canvas>().renderMode == RenderMode.ScreenSpaceCamera)
+        if (GetComponentInParent<Canvas>().renderMode == RenderMode.ScreenSpaceCamera && cam is not null)
         {
             bottomLeft = cam.WorldToScreenPoint(corners[0]);
             topLeft = cam.WorldToScreenPoint(corners[1]);
