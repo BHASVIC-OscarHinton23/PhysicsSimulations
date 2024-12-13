@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,9 +13,12 @@ public class InformationPanel : MonoBehaviour
     // Update label stating the current value
     public void updateVelocityLabel(float value)
     {
-        TextMesh textMesh = velocityPanel.GetComponentInChildren<TextMesh>();
+        GameObject slider = velocityPanel.transform.Find("Slider").gameObject;
+        GameObject textLabel = velocityPanel.transform.Find("VariableName").gameObject;
+        TextMeshProUGUI textComponent = textLabel.GetComponent<TextMeshProUGUI>();
+        Slider sliderComponent = slider.GetComponent<Slider>();
 
-        textMesh.text = $"Velocity: {value} m/s";
+        textComponent.text = $"Velocity: {sliderComponent.value} m/s";
     }
 
 
@@ -25,8 +29,8 @@ public class InformationPanel : MonoBehaviour
         GameObject upperBound = velocityPanel.transform.Find("UpperBound").gameObject;
         GameObject sliderObject = velocityPanel.transform.Find("Slider").gameObject;
         Slider slider = sliderObject.GetComponent<Slider>();
-        InputField lower = lowerBound.GetComponent<InputField>();
-        InputField upper = upperBound.GetComponent<InputField>();
+        TMP_InputField lower = lowerBound.GetComponent<TMP_InputField>();
+        TMP_InputField upper = upperBound.GetComponent<TMP_InputField>();
 
         float lowerValue = float.Parse(lower.text);
         float upperValue = float.Parse(upper.text);
@@ -53,8 +57,8 @@ public class InformationPanel : MonoBehaviour
         GameObject upperBound = velocityPanel.transform.Find("UpperBound").gameObject;
         GameObject sliderObject = velocityPanel.transform.Find("Slider").gameObject;
         Slider slider = sliderObject.GetComponent<Slider>();
-        InputField lower = lowerBound.GetComponent<InputField>();
-        InputField upper = upperBound.GetComponent<InputField>();
+        TMP_InputField lower = lowerBound.GetComponent<TMP_InputField>();
+        TMP_InputField upper = upperBound.GetComponent<TMP_InputField>();
 
         float lowerValue = float.Parse(lower.text);
         float upperValue = float.Parse(upper.text);
