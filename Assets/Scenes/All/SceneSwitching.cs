@@ -14,12 +14,12 @@ public class SceneSwitching : MonoBehaviour
     public void changeToSettings()
     {
         Debug.Log("Switching scene: Settings");
-        SceneManager.LoadScene("Settings");
+        SceneManager.LoadScene("Settings", LoadSceneMode.Single);
     }
 
     public void changeToTemplateSimulation()
     {
         Debug.Log("Switching scene: TemplateSimulation");
-        SceneManager.LoadScene("template");
+        SceneManager.LoadScene("template", LoadSceneMode.Single);
     }
 }
