@@ -72,12 +72,28 @@ public class scaleOnHover : MonoBehaviour
         // https://docs.unity3d.com/ScriptReference/RectTransform.GetWorldCorners.html
 
         Vector3[] corners = new Vector3[4];
+        Vector2 bottomLeft;
+        Vector2 topLeft;
+        Vector2 topRight;
+        Vector2 bottomRight;
+        
         rectTransform.GetWorldCorners(corners);
 
-        Vector2 bottomLeft = cam.WorldToScreenPoint(corners[0]);
-        Vector2 topLeft = cam.WorldToScreenPoint(corners[1]);
-        Vector2 topRight = cam.WorldToScreenPoint(corners[2]);
-        Vector2 bottomRight = cam.WorldToScreenPoint(corners[3]);
+        if (GetComponentInParent<Canvas>().renderMode == RenderMode.ScreenSpaceCamera)
+        {
+            bottomLeft = cam.WorldToScreenPoint(corners[0]);
+            topLeft = cam.WorldToScreenPoint(corners[1]);
+            topRight = cam.WorldToScreenPoint(corners[2]);
+            bottomRight = cam.WorldToScreenPoint(corners[3]);
+        }
+        else
+        {
+            bottomLeft = corners[0];
+            topLeft = corners[1];
+            topRight = corners[2];
+            bottomRight = corners[3];
+        }
+        
 
         // Like before, check if mouse is over panel by comparing coordinates of corners and mouse
         bool inXRange = mousePosition.x > topLeft.x && mousePosition.x < topRight.x;
