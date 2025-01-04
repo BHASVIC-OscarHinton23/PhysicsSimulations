@@ -120,11 +120,10 @@ public class DoCircularMotion : MonoBehaviour
         double distance = (otherObject.transform.position - this.transform.position).magnitude;
         Vector2 direction = (otherObject.transform.position - this.transform.position).normalized;
 
-        double forceX = ((4 * Math.Pow(Math.PI, 2) * radius * mass) / Math.Pow(period, 2)) * Math.Cos(angle);
-        double forceY = ((4 * Math.Pow(Math.PI, 2) * radius * mass) / Math.Pow(period, 2)) * Math.Sin(angle);
+        double force = ((4 * Math.Pow(Math.PI, 2) * radius * mass) / Math.Pow(period, 2));
 
-        direction.x *= (float)forceX;
-        direction.y *= (float)forceY;
+        direction.x *= (float)force;
+        direction.y *= (float)force;
 
         this.centripetalForce = direction;
     }

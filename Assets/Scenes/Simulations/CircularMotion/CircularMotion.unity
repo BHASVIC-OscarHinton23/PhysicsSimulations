@@ -3137,9 +3137,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   centreOfRotation: {fileID: 445219326}
-  mass: 1
-  radius: 10
-  period: 2
+  mass: 2
+  radius: 1
+  period: 1000
   useGravity: 0
   centripetalForce: {x: 0, y: 0}
   centripetalAcceleration: {x: 0, y: 0}
