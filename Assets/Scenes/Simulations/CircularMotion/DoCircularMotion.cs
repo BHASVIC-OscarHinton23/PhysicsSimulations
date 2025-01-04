@@ -99,7 +99,7 @@ public class DoCircularMotion : MonoBehaviour
 
     private void updatePosition(float fixedDeltaTime)
     {
-        this.transform.Translate(this.velocity *  fixedDeltaTime);
+        this.transform.position = new Vector2(transform.position.x + (this.velocity.x * fixedDeltaTime), transform.position.y + (this.velocity.y * fixedDeltaTime));
     }
 
     private void updateVelocity(float fixedDeltaTime)
