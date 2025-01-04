@@ -36,6 +36,9 @@ public class DoCircularMotion : MonoBehaviour
 
         //Debug.Log($"Acute angle: {angle * (180 / Math.PI)} degrees");
 
+        // Calculate distance
+        this.radius = (this.centreOfRotation.transform.position - this.transform.position).magnitude;
+
         doForces(centreOfRotation);
         doAcceleration();
         updateVelocity(Time.fixedDeltaTime);
