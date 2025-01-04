@@ -162,7 +162,7 @@ public class InformationPanel : MonoBehaviour
         TextMeshProUGUI textComponent = textLabel.GetComponent<TextMeshProUGUI>();
         Slider sliderComponent = slider.GetComponent<Slider>();
 
-        textComponent.text = $"Velocity: {sliderComponent.value} m/s";
+        textComponent.text = $"Centripetal Force: {sliderComponent.value} N";
     }
 
 
