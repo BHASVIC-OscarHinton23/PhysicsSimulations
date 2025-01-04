@@ -3139,7 +3139,7 @@ MonoBehaviour:
   centreOfRotation: {fileID: 445219326}
   mass: 2
   radius: 1
-  period: 1000
+  period: 10
   useGravity: 0
   centripetalForce: {x: 0, y: 0}
   centripetalAcceleration: {x: 0, y: 0}
