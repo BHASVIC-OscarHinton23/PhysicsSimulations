@@ -904,6 +904,7 @@ GameObject:
   - component: {fileID: 449029986}
   - component: {fileID: 449029985}
   - component: {fileID: 449029984}
+  - component: {fileID: 449029987}
   m_Layer: 0
   m_Name: Global
   m_TagString: Untagged
@@ -951,6 +952,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &449029987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 449029983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a05c5364b5506a47beb627d3be4d173, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &463981679
 GameObject:
   m_ObjectHideFlags: 0
@@ -4087,9 +4100,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 449029987}
         m_TargetAssemblyTypeName: SceneSwitching, Assembly-CSharp
-        m_MethodName: changeToSettings
+        m_MethodName: changeToSimulationSelection
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5736,7 +5749,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 449029987}
         m_TargetAssemblyTypeName: SceneSwitching, Assembly-CSharp
         m_MethodName: changeToSettings
         m_Mode: 1
