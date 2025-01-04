@@ -5,14 +5,30 @@ public class DoCircularMotion : MonoBehaviour
 {
     public GameObject centreOfRotation;
     public float mass;
-    public Vector2 gravitationAcceleration;
     public float radius;
     public float period;
     public Boolean useGravity;
     public Vector2 centripetalForce;
     public Vector2 centripetalAcceleration;
+    public Vector2 gravitationAcceleration;
     public Vector2 velocity;
 
+
+    private void Start()
+    {
+        // Actually calculate what the values should be at the start of the scene
+
+        // Distance:
+        this.radius = (this.centreOfRotation.transform.position - this.transform.position).magnitude;
+
+        // Velocity calculations
+        // Body starts to the east so x comp is just 0 (it's going vertically)
+        // v = omega * r
+        // omega = 2 pi / period
+
+        double velocityY = (2 * Math.PI / this.period) * this.radius;
+        this.velocity = new Vector2(0, (float)velocityY);
+    }
 
     private void FixedUpdate()
     {
@@ -95,7 +111,6 @@ public class DoCircularMotion : MonoBehaviour
 
     private void doForces(GameObject otherObject)
     {
-        Vector2 resultantForce = new Vector2(0, 0);
         double angle = getAcuteAngle(this.centreOfRotation);
 
         // Get distance and direction vector
