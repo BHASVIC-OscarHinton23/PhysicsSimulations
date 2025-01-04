@@ -22,4 +22,16 @@ public class SceneSwitching : MonoBehaviour
         Debug.Log("Switching scene: TemplateSimulation");
         SceneManager.LoadScene("template", LoadSceneMode.Single);
     }
+
+    public void changeToSimulationSelection()
+    {
+        Debug.Log("Switching scene: SimulationSelection");
+        SceneManager.LoadScene("SimulationSelection", LoadSceneMode.Single);
+    }
+
+    public void changeToCircularMotion()
+    {
+        Debug.Log("Switching scene: CircularMotion");
+        SceneManager.LoadScene("CircularMotion", LoadSceneMode.Single);
+    }    
 }
