@@ -312,13 +312,13 @@ public class InformationPanel : MonoBehaviour
     }
     #endregion
 
-    #region Centripetal Force Listeners (example)
+    #region Centripetal Force Listeners
 
     // Update label stating the current value
     public void updateCFLabel(Vector2 value)
     {
         GameObject textLabel = CFPanel.transform.Find("VariableName").gameObject;
-        textLabel.GetComponent<TextMeshProUGUI>().text = $"Centripetal Force: {value.magnitude} N";
+        textLabel.GetComponent<TextMeshProUGUI>().text = $"Centripetal Force: {value.magnitude:0.00} N";
 
         // Components
         updateCFHorizontalLabel(value.x);
@@ -328,85 +328,67 @@ public class InformationPanel : MonoBehaviour
     public void updateCFHorizontalLabel(float value)
     {
         GameObject textLabel = CFHorizontalPanel.transform.Find("VariableName").gameObject;
-        textLabel.GetComponent<TextMeshProUGUI>().text = $"Horizontal: {value} N";
+        textLabel.GetComponent<TextMeshProUGUI>().text = $"Horizontal: {value:0.00} N";
     }
 
     public void updateCFVerticalLabel(float value)
     {
         GameObject textLabel = CFVerticalPanel.transform.Find("VariableName").gameObject;
-        textLabel.GetComponent<TextMeshProUGUI>().text = $"Vertical: {value} N";
+        textLabel.GetComponent<TextMeshProUGUI>().text = $"Vertical: {value:0.00} N";
     }
 
     #endregion
 
-
-    #region Velocity Listeners (example)
+    #region Centripetal Acceleration Listeners
 
     // Update label stating the current value
-    public void updateVelocityLabel(float value)
+    public void updateCALabel(Vector2 value)
     {
-        GameObject slider = velocityPanel.transform.Find("Slider").gameObject;
+        GameObject textLabel = CAPanel.transform.Find("VariableName").gameObject;
+        textLabel.GetComponent<TextMeshProUGUI>().text = $"Centripetal Acceleration: {value.magnitude:0.00} m/s²";
+
+        // Components
+        updateCAHorizontalLabel(value.x);
+        updateCAVerticalLabel(value.y);
+    }
+
+    public void updateCAHorizontalLabel(float value)
+    {
+        GameObject textLabel = CAHorizontalPanel.transform.Find("VariableName").gameObject;
+        textLabel.GetComponent<TextMeshProUGUI>().text = $"Horizontal: {value:0.00} m/s²";
+    }
+
+    public void updateCAVerticalLabel(float value)
+    {
+        GameObject textLabel = CAVerticalPanel.transform.Find("VariableName").gameObject;
+        textLabel.GetComponent<TextMeshProUGUI>().text = $"Vertical: {value:0.00} m/s²";
+    }
+
+    #endregion
+
+    #region Velocity Listeners
+
+    // Update label stating the current value
+    public void updateVelocityLabel(Vector2 value)
+    {
         GameObject textLabel = velocityPanel.transform.Find("VariableName").gameObject;
-        TextMeshProUGUI textComponent = textLabel.GetComponent<TextMeshProUGUI>();
-        Slider sliderComponent = slider.GetComponent<Slider>();
+        textLabel.GetComponent<TextMeshProUGUI>().text = $"Tangential Velocity: {value.magnitude:0.00} m/s";
 
-        textComponent.text = $"Velocity: {sliderComponent.value} m/s";
+        // Components
+        updateVelocityHorizontalLabel(value.x);
+        updateVelocityVerticalLabel(value.y);
     }
 
-
-    // Listener for lower bound text input
-    public void changeVelocityLowerBound(string value)
+    public void updateVelocityHorizontalLabel(float value)
     {
-        GameObject lowerBound = velocityPanel.transform.Find("LowerBound").gameObject;
-        GameObject upperBound = velocityPanel.transform.Find("UpperBound").gameObject;
-        GameObject sliderObject = velocityPanel.transform.Find("Slider").gameObject;
-        Slider slider = sliderObject.GetComponent<Slider>();
-        TMP_InputField lower = lowerBound.GetComponent<TMP_InputField>();
-        TMP_InputField upper = upperBound.GetComponent<TMP_InputField>();
-
-        float lowerValue = float.Parse(lower.text);
-        float upperValue = float.Parse(upper.text);
-
-        // Check if value is greater than maximum, or if below 0
-        // Set to 0 and return if so
-        if (lowerValue >= upperValue || lowerValue < 0)
-        {
-            lower.text = "0";
-            slider.minValue = 0;
-
-            return;
-        }
-
-        // Change lower bound to what was inputted
-        slider.minValue = lowerValue;
+        GameObject textLabel = velocityHorizontalPanel.transform.Find("VariableName").gameObject;
+        textLabel.GetComponent<TextMeshProUGUI>().text = $"Horizontal: {value:0.00} m/s";
     }
 
-
-    // Listener for upper bound text input
-    public void changeVelocityUpperBound(string value) 
+    public void updateVelocityVerticalLabel(float value)
     {
-        GameObject lowerBound = velocityPanel.transform.Find("LowerBound").gameObject;
-        GameObject upperBound = velocityPanel.transform.Find("UpperBound").gameObject;
-        GameObject sliderObject = velocityPanel.transform.Find("Slider").gameObject;
-        Slider slider = sliderObject.GetComponent<Slider>();
-        TMP_InputField lower = lowerBound.GetComponent<TMP_InputField>();
-        TMP_InputField upper = upperBound.GetComponent<TMP_InputField>();
-
-        float lowerValue = float.Parse(lower.text);
-        float upperValue = float.Parse(upper.text);
-
-        // Check if value is greater than maximum, or if below 0
-        // Set to 0 and return if so
-        if (upperValue <= lowerValue)
-        {
-            upper.text = $"{lowerValue + 1}";
-            slider.minValue = lowerValue + 1;
-
-            return;
-        }
-
-        // Change lower bound to what was inputted
-        slider.maxValue = upperValue;
+        GameObject textLabel = velocityVerticalPanel.transform.Find("VariableName").gameObject;
+        textLabel.GetComponent<TextMeshProUGUI>().text = $"Vertical: {value:0.00} m/s";
     }
 
     #endregion

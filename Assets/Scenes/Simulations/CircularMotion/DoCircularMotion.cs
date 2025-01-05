@@ -49,6 +49,8 @@ public class DoCircularMotion : MonoBehaviour
         InformationPanel infoPanelComponent = globalObject.GetComponent<InformationPanel>();
 
         infoPanelComponent.updateCFLabel(this.centripetalForce);
+        infoPanelComponent.updateCALabel(this.centripetalAcceleration);
+        infoPanelComponent.updateVelocityLabel(this.velocity);
     }
 
     // Get acute angle between this object and a target object, in radians.
