@@ -286,8 +286,8 @@ public class InformationPanel : MonoBehaviour
         GameObject slider = periodPanel.transform.Find("Slider").gameObject;
         Slider sliderComponent = slider.GetComponent<Slider>();
 
-        setNewVelocityRadius(sliderComponent.value, cmComponent.radius);
-        setNewRadius(sliderComponent.value);
+        setNewVelocityPeriod(sliderComponent.value, cmComponent.period);
+        //setNewRadius(sliderComponent.value);
         cmComponent.period = sliderComponent.value;
     }
 
