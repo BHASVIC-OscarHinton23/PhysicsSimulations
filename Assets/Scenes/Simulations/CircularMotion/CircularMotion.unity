@@ -356,7 +356,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 879758345}
   m_HandleRect: {fileID: 941028892}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 2
   m_MaxValue: 10
   m_WholeNumbers: 0
   m_Value: 2
@@ -365,7 +365,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 449029984}
         m_TargetAssemblyTypeName: InformationPanel, Assembly-CSharp
-        m_MethodName: updateCFLabel
+        m_MethodName: updateRadiusLabel
         m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -375,6 +375,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
+      - m_Target: {fileID: 449029984}
+        m_TargetAssemblyTypeName: InformationPanel, Assembly-CSharp
+        m_MethodName: radiusSliderListener
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &43778923
 GameObject:
   m_ObjectHideFlags: 0
@@ -2410,7 +2422,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Radius: 2 m/s'
+  m_text: 'Radius: 2 m'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2911,7 +2923,7 @@ Transform:
   m_GameObject: {fileID: 761399046}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.06, y: 0.4536106, z: 13.431458}
+  m_LocalPosition: {x: -0.266997, y: 0.4536106, z: 13.431458}
   m_LocalScale: {x: 0.21211834, y: 0.19749664, z: 0.5185}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2984,7 +2996,7 @@ MonoBehaviour:
   centreOfRotation: {fileID: 445219326}
   mass: 2
   radius: 1
-  period: 10
+  period: 1
   useGravity: 0
   centripetalForce: {x: 0, y: 0}
   centripetalAcceleration: {x: 0, y: 0}
@@ -3719,7 +3731,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 21635224}
   m_HandleRect: {fileID: 454717225}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 2
   m_MaxValue: 10
   m_WholeNumbers: 0
   m_Value: 2
@@ -3728,7 +3740,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 449029984}
         m_TargetAssemblyTypeName: InformationPanel, Assembly-CSharp
-        m_MethodName: updateCFLabel
+        m_MethodName: updateMassLabel
         m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3970,7 +3982,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "0\u200B"
+  m_text: "2\u200B"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6080,7 +6092,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Mass: 1 kg'
+  m_text: 'Mass: 2 kg'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6954,7 +6966,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 111, y: -12.600018}
+  m_AnchoredPosition: {x: 111, y: 12.4}
   m_SizeDelta: {x: 61.3, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1616887231
@@ -7021,7 +7033,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 449029984}
         m_TargetAssemblyTypeName: InformationPanel, Assembly-CSharp
-        m_MethodName: changeCFUpperBound
+        m_MethodName: changeRadiusUpperBound
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7296,7 +7308,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "0\u200B"
+  m_text: "2\u200B"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -7476,7 +7488,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 449029984}
         m_TargetAssemblyTypeName: InformationPanel, Assembly-CSharp
-        m_MethodName: changeCFLowerBound
+        m_MethodName: changeRadiusLowerBound
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7510,7 +7522,7 @@ MonoBehaviour:
   m_CaretColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_CustomCaretColor: 0
   m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0.7529412}
-  m_Text: 0
+  m_Text: 2
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
   m_ReadOnly: 0
@@ -8967,7 +8979,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 449029984}
         m_TargetAssemblyTypeName: InformationPanel, Assembly-CSharp
-        m_MethodName: changeCFLowerBound
+        m_MethodName: changeMassLowerBound
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9001,7 +9013,7 @@ MonoBehaviour:
   m_CaretColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_CustomCaretColor: 0
   m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0.7529412}
-  m_Text: 0
+  m_Text: 2
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
   m_ReadOnly: 0
@@ -9700,7 +9712,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 449029984}
         m_TargetAssemblyTypeName: InformationPanel, Assembly-CSharp
-        m_MethodName: changeCFUpperBound
+        m_MethodName: changeMassUpperBound
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
