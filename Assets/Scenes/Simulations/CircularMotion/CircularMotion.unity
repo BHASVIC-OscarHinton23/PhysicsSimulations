@@ -2005,8 +2005,14 @@ MonoBehaviour:
   radiusPanel: {fileID: 989801968}
   periodPanel: {fileID: 429206769}
   CFPanel: {fileID: 491267900}
+  CFHorizontalPanel: {fileID: 9221118}
+  CFVerticalPanel: {fileID: 1312483194}
   CAPanel: {fileID: 1193866399}
+  CAHorizontalPanel: {fileID: 133815466}
+  CAVerticalPanel: {fileID: 1204808676}
   velocityPanel: {fileID: 1572257566}
+  velocityHorizontalPanel: {fileID: 1940463292}
+  velocityVerticalPanel: {fileID: 729329223}
 --- !u!114 &449029985
 MonoBehaviour:
   m_ObjectHideFlags: 0
