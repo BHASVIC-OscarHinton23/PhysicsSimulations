@@ -168,7 +168,7 @@ public class InformationPanel : MonoBehaviour
         GameObject slider = radiusPanel.transform.Find("Slider").gameObject;
         Slider sliderComponent = slider.GetComponent<Slider>();
 
-        setNewVelocity(sliderComponent.value, cmComponent.radius);
+        setNewVelocityRadius(sliderComponent.value, cmComponent.radius);
         setNewRadius(sliderComponent.value);
         cmComponent.radius = sliderComponent.value;
     }
@@ -195,7 +195,7 @@ public class InformationPanel : MonoBehaviour
 
     }
 
-    void setNewVelocity(float newRadius, float oldRadius)
+    void setNewVelocityRadius(float newRadius, float oldRadius)
     {
         DoCircularMotion cmComponent = body.GetComponent<DoCircularMotion>();
 
@@ -205,6 +205,102 @@ public class InformationPanel : MonoBehaviour
         // so v0.normalised * |v1| / |v0| gives new velocity
         double magnitudeOldVelocity = (2 * Math.PI / cmComponent.period) * oldRadius;
         double magnitudeNewVelocity = (2 * Math.PI / cmComponent.period) * newRadius;
+        double velocityChangeMultiplier = magnitudeNewVelocity / magnitudeOldVelocity;
+
+        cmComponent.velocity *= (float)velocityChangeMultiplier;
+    }
+    #endregion
+
+    #region Period Listeners
+
+    // Update label stating the current value
+    public void updatePeriodLabel(float value)
+    {
+        GameObject slider = periodPanel.transform.Find("Slider").gameObject;
+        GameObject textLabel = periodPanel.transform.Find("VariableName").gameObject;
+        TextMeshProUGUI textComponent = textLabel.GetComponent<TextMeshProUGUI>();
+        Slider sliderComponent = slider.GetComponent<Slider>();
+
+        textComponent.text = $"Period: {sliderComponent.value} s";
+    }
+
+
+    // Listener for lower bound text input
+    public void changePeriodLowerBound(string value)
+    {
+        GameObject lowerBound = periodPanel.transform.Find("LowerBound").gameObject;
+        GameObject upperBound = periodPanel.transform.Find("UpperBound").gameObject;
+        GameObject sliderObject = periodPanel.transform.Find("Slider").gameObject;
+        Slider slider = sliderObject.GetComponent<Slider>();
+        TMP_InputField lower = lowerBound.GetComponent<TMP_InputField>();
+        TMP_InputField upper = upperBound.GetComponent<TMP_InputField>();
+
+        float lowerValue = float.Parse(lower.text);
+        float upperValue = float.Parse(upper.text);
+
+        // Check if value is greater than maximum, or if below 0
+        // Set to 0 and return if so
+        if (lowerValue >= upperValue || lowerValue <= 0)
+        {
+            lower.text = "0.001";
+            slider.minValue = 0.001f;
+
+            return;
+        }
+
+        // Change lower bound to what was inputted
+        slider.minValue = lowerValue;
+    }
+
+
+    // Listener for upper bound text input
+    public void changePeriodUpperBound(string value)
+    {
+        GameObject lowerBound = periodPanel.transform.Find("LowerBound").gameObject;
+        GameObject upperBound = periodPanel.transform.Find("UpperBound").gameObject;
+        GameObject sliderObject = periodPanel.transform.Find("Slider").gameObject;
+        Slider slider = sliderObject.GetComponent<Slider>();
+        TMP_InputField lower = lowerBound.GetComponent<TMP_InputField>();
+        TMP_InputField upper = upperBound.GetComponent<TMP_InputField>();
+
+        float lowerValue = float.Parse(lower.text);
+        float upperValue = float.Parse(upper.text);
+
+        // Check if value is greater than maximum, or if below 0
+        // Set to 0 and return if so
+        if (upperValue <= lowerValue)
+        {
+            upper.text = $"{lowerValue + 1}";
+            slider.minValue = lowerValue + 1;
+
+            return;
+        }
+
+        // Change lower bound to what was inputted
+        slider.maxValue = upperValue;
+    }
+
+    public void periodSliderListener()
+    {
+        DoCircularMotion cmComponent = body.GetComponent<DoCircularMotion>();
+        GameObject slider = periodPanel.transform.Find("Slider").gameObject;
+        Slider sliderComponent = slider.GetComponent<Slider>();
+
+        setNewVelocityRadius(sliderComponent.value, cmComponent.radius);
+        setNewRadius(sliderComponent.value);
+        cmComponent.period = sliderComponent.value;
+    }
+
+    void setNewVelocityPeriod(float newPeriod, float oldPeriod)
+    {
+        DoCircularMotion cmComponent = body.GetComponent<DoCircularMotion>();
+
+        // When changing R, v also needs to be adjusted
+        // For V0 = wr0, v1 = wr1
+        // |v1| / |v0| gives multiple for vel change
+        // so v0.normalised * |v1| / |v0| gives new velocity
+        double magnitudeOldVelocity = (2 * Math.PI / oldPeriod) * cmComponent.radius;
+        double magnitudeNewVelocity = (2 * Math.PI / newPeriod) * cmComponent.radius;
         double velocityChangeMultiplier = magnitudeNewVelocity / magnitudeOldVelocity;
 
         cmComponent.velocity *= (float)velocityChangeMultiplier;
