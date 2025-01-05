@@ -280,7 +280,7 @@ public class InformationPanel : MonoBehaviour
         slider.maxValue = upperValue;
     }
 
-    public void periodSliderListener()
+    public void periodSliderListener(float value)
     {
         DoCircularMotion cmComponent = body.GetComponent<DoCircularMotion>();
         GameObject slider = periodPanel.transform.Find("Slider").gameObject;
@@ -355,77 +355,6 @@ public class InformationPanel : MonoBehaviour
         GameObject lowerBound = velocityPanel.transform.Find("LowerBound").gameObject;
         GameObject upperBound = velocityPanel.transform.Find("UpperBound").gameObject;
         GameObject sliderObject = velocityPanel.transform.Find("Slider").gameObject;
-        Slider slider = sliderObject.GetComponent<Slider>();
-        TMP_InputField lower = lowerBound.GetComponent<TMP_InputField>();
-        TMP_InputField upper = upperBound.GetComponent<TMP_InputField>();
-
-        float lowerValue = float.Parse(lower.text);
-        float upperValue = float.Parse(upper.text);
-
-        // Check if value is greater than maximum, or if below 0
-        // Set to 0 and return if so
-        if (upperValue <= lowerValue)
-        {
-            upper.text = $"{lowerValue + 1}";
-            slider.minValue = lowerValue + 1;
-
-            return;
-        }
-
-        // Change lower bound to what was inputted
-        slider.maxValue = upperValue;
-    }
-
-    #endregion
-
-    #region Period Listeners (example)
-
-    // Update label stating the current value
-    public void updatePeriodLabel(float value)
-    {
-        GameObject slider = periodPanel.transform.Find("Slider").gameObject;
-        GameObject textLabel = periodPanel.transform.Find("VariableName").gameObject;
-        TextMeshProUGUI textComponent = textLabel.GetComponent<TextMeshProUGUI>();
-        Slider sliderComponent = slider.GetComponent<Slider>();
-
-        textComponent.text = $"Period: {sliderComponent.value} s";
-    }
-
-
-    // Listener for lower bound text input
-    public void changePeriodLowerBound(string value)
-    {
-        GameObject lowerBound = periodPanel.transform.Find("LowerBound").gameObject;
-        GameObject upperBound = periodPanel.transform.Find("UpperBound").gameObject;
-        GameObject sliderObject = periodPanel.transform.Find("Slider").gameObject;
-        Slider slider = sliderObject.GetComponent<Slider>();
-        TMP_InputField lower = lowerBound.GetComponent<TMP_InputField>();
-        TMP_InputField upper = upperBound.GetComponent<TMP_InputField>();
-
-        float lowerValue = float.Parse(lower.text);
-        float upperValue = float.Parse(upper.text);
-
-        // Check if value is greater than maximum, or if below 0
-        // Set to 0 and return if so
-        if (lowerValue >= upperValue || lowerValue < 0)
-        {
-            lower.text = "0";
-            slider.minValue = 0;
-
-            return;
-        }
-
-        // Change lower bound to what was inputted
-        slider.minValue = lowerValue;
-    }
-
-
-    // Listener for upper bound text input
-    public void changePeriodUpperBound(string value)
-    {
-        GameObject lowerBound = periodPanel.transform.Find("LowerBound").gameObject;
-        GameObject upperBound = periodPanel.transform.Find("UpperBound").gameObject;
-        GameObject sliderObject = periodPanel.transform.Find("Slider").gameObject;
         Slider slider = sliderObject.GetComponent<Slider>();
         TMP_InputField lower = lowerBound.GetComponent<TMP_InputField>();
         TMP_InputField upper = upperBound.GetComponent<TMP_InputField>();
