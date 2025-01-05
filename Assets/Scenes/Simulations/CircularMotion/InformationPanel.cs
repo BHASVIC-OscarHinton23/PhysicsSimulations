@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -43,10 +44,10 @@ public class InformationPanel : MonoBehaviour
 
         // Check if value is greater than maximum, or if below 0
         // Set to 0 and return if so
-        if (lowerValue >= upperValue || lowerValue < 0)
+        if (lowerValue >= upperValue || lowerValue <= 0)
         {
-            lower.text = "0";
-            slider.minValue = 0;
+            lower.text = "0.001";
+            slider.minValue = 0.001f;
 
             return;
         }
@@ -89,6 +90,124 @@ public class InformationPanel : MonoBehaviour
         GameObject slider = massPanel.transform.Find("Slider").gameObject;
         Slider sliderComponent = slider.GetComponent<Slider>();
         cmComponent.mass = sliderComponent.value;
+    }
+    #endregion
+
+    #region Radius Listeners
+
+    // Update label stating the current value
+    public void updateRadiusLabel(float value)
+    {
+        GameObject slider = radiusPanel.transform.Find("Slider").gameObject;
+        GameObject textLabel = radiusPanel.transform.Find("VariableName").gameObject;
+        TextMeshProUGUI textComponent = textLabel.GetComponent<TextMeshProUGUI>();
+        Slider sliderComponent = slider.GetComponent<Slider>();
+
+        textComponent.text = $"Radius: {sliderComponent.value} m";
+    }
+
+
+    // Listener for lower bound text input
+    public void changeRadiusLowerBound(string value)
+    {
+        GameObject lowerBound = radiusPanel.transform.Find("LowerBound").gameObject;
+        GameObject upperBound = radiusPanel.transform.Find("UpperBound").gameObject;
+        GameObject sliderObject = radiusPanel.transform.Find("Slider").gameObject;
+        Slider slider = sliderObject.GetComponent<Slider>();
+        TMP_InputField lower = lowerBound.GetComponent<TMP_InputField>();
+        TMP_InputField upper = upperBound.GetComponent<TMP_InputField>();
+
+        float lowerValue = float.Parse(lower.text);
+        float upperValue = float.Parse(upper.text);
+
+        // Check if value is greater than maximum, or if below 0
+        // Set to 0 and return if so
+        if (lowerValue >= upperValue || lowerValue <= 0)
+        {
+            lower.text = "0.001";
+            slider.minValue = 0.001f;
+
+            return;
+        }
+
+        // Change lower bound to what was inputted
+        slider.minValue = lowerValue;
+    }
+
+
+    // Listener for upper bound text input
+    public void changeRadiusUpperBound(string value)
+    {
+        GameObject lowerBound = radiusPanel.transform.Find("LowerBound").gameObject;
+        GameObject upperBound = radiusPanel.transform.Find("UpperBound").gameObject;
+        GameObject sliderObject = radiusPanel.transform.Find("Slider").gameObject;
+        Slider slider = sliderObject.GetComponent<Slider>();
+        TMP_InputField lower = lowerBound.GetComponent<TMP_InputField>();
+        TMP_InputField upper = upperBound.GetComponent<TMP_InputField>();
+
+        float lowerValue = float.Parse(lower.text);
+        float upperValue = float.Parse(upper.text);
+
+        // Check if value is greater than maximum, or if below 0
+        // Set to 0 and return if so
+        if (upperValue <= lowerValue)
+        {
+            upper.text = $"{lowerValue + 1}";
+            slider.minValue = lowerValue + 1;
+
+            return;
+        }
+
+        // Change lower bound to what was inputted
+        slider.maxValue = upperValue;
+    }
+
+    public void radiusSliderListener(float value)
+    {
+        DoCircularMotion cmComponent = body.GetComponent<DoCircularMotion>();
+        GameObject slider = radiusPanel.transform.Find("Slider").gameObject;
+        Slider sliderComponent = slider.GetComponent<Slider>();
+
+        setNewVelocity(sliderComponent.value, cmComponent.radius);
+        setNewRadius(sliderComponent.value);
+        cmComponent.radius = sliderComponent.value;
+    }
+
+    void setNewRadius(float newRadius)
+    {
+        // For new radius to take effect, must translate so that body is that distance away
+        // This should also prevent the weird elliptical motion when radius is changed (as the body's distance actually changes)
+
+        // Unit vector in direction of COR
+        GameObject COR = GameObject.Find("CentreOfRotation");
+        Vector2 directionVectorCOR = (COR.transform.position - body.transform.position).normalized;
+        Vector2 directionVectorAway = -directionVectorCOR;
+
+        // Make displacement vector by multiplying directionVectorAway by difference in radius
+        // old radius should be current radius of body
+        float oldRadius = body.GetComponent<DoCircularMotion>().radius;
+        float deltaRadius = (newRadius - oldRadius);
+
+        directionVectorAway *= deltaRadius;
+
+        // Translate body
+        body.transform.Translate(directionVectorAway);
+
+    }
+
+    void setNewVelocity(float newRadius, float oldRadius)
+    {
+        DoCircularMotion cmComponent = body.GetComponent<DoCircularMotion>();
+
+        // When changing R, v also needs to be adjusted
+        // For V0 = wr0, v1 = wr1
+        // |v1| / |v0| gives multiple for vel change
+        // so v0.normalised * |v1| / |v0| gives new velocity
+        double magnitudeOldVelocity = (2 * Math.PI / cmComponent.period) * oldRadius;
+        double magnitudeNewVelocity = (2 * Math.PI / cmComponent.period) * newRadius;
+        double velocityChangeMultiplier = magnitudeNewVelocity / magnitudeOldVelocity;
+
+        cmComponent.velocity *= (float)velocityChangeMultiplier;
     }
     #endregion
 
