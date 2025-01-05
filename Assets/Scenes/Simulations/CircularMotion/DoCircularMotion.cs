@@ -43,6 +43,12 @@ public class DoCircularMotion : MonoBehaviour
         doAcceleration();
         updateVelocity(Time.fixedDeltaTime);
         updatePosition(Time.fixedDeltaTime);
+
+        // Update UI elements
+        GameObject globalObject = GameObject.Find("Global");
+        InformationPanel infoPanelComponent = globalObject.GetComponent<InformationPanel>();
+
+        infoPanelComponent.updateCFLabel(this.centripetalForce);
     }
 
     // Get acute angle between this object and a target object, in radians.

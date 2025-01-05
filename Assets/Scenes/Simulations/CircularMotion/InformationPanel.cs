@@ -12,8 +12,14 @@ public class InformationPanel : MonoBehaviour
     public GameObject radiusPanel;
     public GameObject periodPanel;
     public GameObject CFPanel;
+    public GameObject CFHorizontalPanel;
+    public GameObject CFVerticalPanel;
     public GameObject CAPanel;
+    public GameObject CAHorizontalPanel;
+    public GameObject CAVerticalPanel;
     public GameObject velocityPanel;
+    public GameObject velocityHorizontalPanel;
+    public GameObject velocityVerticalPanel;
 
     #region Mass Listeners
 
@@ -287,7 +293,6 @@ public class InformationPanel : MonoBehaviour
         Slider sliderComponent = slider.GetComponent<Slider>();
 
         setNewVelocityPeriod(sliderComponent.value, cmComponent.period);
-        //setNewRadius(sliderComponent.value);
         cmComponent.period = sliderComponent.value;
     }
 
@@ -306,6 +311,34 @@ public class InformationPanel : MonoBehaviour
         cmComponent.velocity *= (float)velocityChangeMultiplier;
     }
     #endregion
+
+    #region Centripetal Force Listeners (example)
+
+    // Update label stating the current value
+    public void updateCFLabel(Vector2 value)
+    {
+        GameObject textLabel = CFPanel.transform.Find("VariableName").gameObject;
+        textLabel.GetComponent<TextMeshProUGUI>().text = $"Centripetal Force: {value.magnitude} N";
+
+        // Components
+        updateCFHorizontalLabel(value.x);
+        updateCFVerticalLabel(value.y);
+    }
+
+    public void updateCFHorizontalLabel(float value)
+    {
+        GameObject textLabel = CFHorizontalPanel.transform.Find("VariableName").gameObject;
+        textLabel.GetComponent<TextMeshProUGUI>().text = $"Horizontal: {value} N";
+    }
+
+    public void updateCFVerticalLabel(float value)
+    {
+        GameObject textLabel = CFVerticalPanel.transform.Find("VariableName").gameObject;
+        textLabel.GetComponent<TextMeshProUGUI>().text = $"Vertical: {value} N";
+    }
+
+    #endregion
+
 
     #region Velocity Listeners (example)
 
@@ -378,74 +411,4 @@ public class InformationPanel : MonoBehaviour
 
     #endregion
 
-    #region Centripetal Force Listeners (example)
-
-    // Update label stating the current value
-    public void updateCFLabel(float value)
-    {
-        GameObject slider = CFPanel.transform.Find("Slider").gameObject;
-        GameObject textLabel = CFPanel.transform.Find("VariableName").gameObject;
-        TextMeshProUGUI textComponent = textLabel.GetComponent<TextMeshProUGUI>();
-        Slider sliderComponent = slider.GetComponent<Slider>();
-
-        textComponent.text = $"Centripetal Force: {sliderComponent.value} N";
-    }
-
-
-    // Listener for lower bound text input
-    public void changeCFLowerBound(string value)
-    {
-        GameObject lowerBound = CFPanel.transform.Find("LowerBound").gameObject;
-        GameObject upperBound = CFPanel.transform.Find("UpperBound").gameObject;
-        GameObject sliderObject = CFPanel.transform.Find("Slider").gameObject;
-        Slider slider = sliderObject.GetComponent<Slider>();
-        TMP_InputField lower = lowerBound.GetComponent<TMP_InputField>();
-        TMP_InputField upper = upperBound.GetComponent<TMP_InputField>();
-
-        float lowerValue = float.Parse(lower.text);
-        float upperValue = float.Parse(upper.text);
-
-        // Check if value is greater than maximum, or if below 0
-        // Set to 0 and return if so
-        if (lowerValue >= upperValue || lowerValue < 0)
-        {
-            lower.text = "0";
-            slider.minValue = 0;
-
-            return;
-        }
-
-        // Change lower bound to what was inputted
-        slider.minValue = lowerValue;
-    }
-
-
-    // Listener for upper bound text input
-    public void changeCFUpperBound(string value)
-    {
-        GameObject lowerBound = CFPanel.transform.Find("LowerBound").gameObject;
-        GameObject upperBound = CFPanel.transform.Find("UpperBound").gameObject;
-        GameObject sliderObject = CFPanel.transform.Find("Slider").gameObject;
-        Slider slider = sliderObject.GetComponent<Slider>();
-        TMP_InputField lower = lowerBound.GetComponent<TMP_InputField>();
-        TMP_InputField upper = upperBound.GetComponent<TMP_InputField>();
-
-        float lowerValue = float.Parse(lower.text);
-        float upperValue = float.Parse(upper.text);
-
-        // Check if value is greater than maximum, or if below 0
-        // Set to 0 and return if so
-        if (upperValue <= lowerValue)
-        {
-            upper.text = $"{lowerValue + 1}";
-            slider.minValue = lowerValue + 1;
-
-            return;
-        }
-
-        // Change lower bound to what was inputted
-        slider.maxValue = upperValue;
-    }
-
-    #endregion
 }
