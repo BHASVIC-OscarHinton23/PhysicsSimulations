@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class DoProjectileMotion : MonoBehaviour
@@ -13,7 +14,7 @@ public class DoProjectileMotion : MonoBehaviour
     public Vector2 velocityVector;
     public Vector2 displacement = new Vector2(0, 0);
 
-    private void Start()
+    public void Start()
     {
         // Make velocity vector
         double velocityX = Math.Cos(angleOfProjection * (Math.PI / 180)) * this.velocity;
@@ -23,6 +24,11 @@ public class DoProjectileMotion : MonoBehaviour
     }
 
     private void FixedUpdate()
+    {
+        onUpdate();
+    }
+
+    public void onUpdate()
     {
         doDisplacement();
         doVelocity();
