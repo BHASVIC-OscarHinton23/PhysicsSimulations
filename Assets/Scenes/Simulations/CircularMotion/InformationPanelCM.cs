@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InformationPanel : MonoBehaviour
+public class InformationPanelCM : MonoBehaviour
 {
     public GameObject body;
     public GameObject massPanel;

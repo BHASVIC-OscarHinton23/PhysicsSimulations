@@ -46,7 +46,7 @@ public class DoCircularMotion : MonoBehaviour
 
         // Update UI elements
         GameObject globalObject = GameObject.Find("Global");
-        InformationPanel infoPanelComponent = globalObject.GetComponent<InformationPanel>();
+        InformationPanelCM infoPanelComponent = globalObject.GetComponent<InformationPanelCM>();
 
         infoPanelComponent.updateCFLabel(this.centripetalForce);
         infoPanelComponent.updateCALabel(this.centripetalAcceleration);
