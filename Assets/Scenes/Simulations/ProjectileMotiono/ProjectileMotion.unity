@@ -1378,6 +1378,7 @@ GameObject:
   - component: {fileID: 449029987}
   - component: {fileID: 449029988}
   - component: {fileID: 449029989}
+  - component: {fileID: 449029990}
   m_Layer: 0
   m_Name: Global
   m_TagString: Untagged
@@ -1450,10 +1451,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   throwawayProjectile: {fileID: 2060266644}
   cannonBarrel: {fileID: 1066075618}
-  massPanel: {fileID: 2053750358}
-  velocityPanel: {fileID: 470340595}
-  gravityPanel: {fileID: 783666291}
-  anglePanel: {fileID: 2121091980}
+  massSlider: {fileID: 833009210}
+  velocitySlider: {fileID: 1509516840}
+  gravitySlider: {fileID: 414049902}
+  angleSlider: {fileID: 1102310879}
+--- !u!114 &449029990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 449029983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a286e88ef0794c4ba8551aebd29a145, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &454717224
 GameObject:
   m_ObjectHideFlags: 0
@@ -10892,7 +10905,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.56078434, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
