@@ -10,10 +10,10 @@ public class InformationPanelPM : MonoBehaviour
 {
     public GameObject throwawayProjectile;
     public GameObject cannonBarrel;
-    public GameObject massPanel;
-    public GameObject velocityPanel;
-    public GameObject gravityPanel;
-    public GameObject anglePanel;
+    public GameObject massSlider;
+    public GameObject velocitySlider;
+    public GameObject gravitySlider;
+    public GameObject angleSlider;
 
     public void launchButtonListener()
     {
@@ -27,7 +27,7 @@ public class InformationPanelPM : MonoBehaviour
         Vector2 pointB = cannonRectVertices[3];
 
         // Get average of corners
-        Vector2 startPosition = pointA + pointB / 2;
+        Vector2 startPosition = (pointA + pointB) / 2;
 
         // Create projectile
         // this.projectile is a throwaway projectile that is never used
@@ -40,9 +40,9 @@ public class InformationPanelPM : MonoBehaviour
         // Set values for PM
         // Start is called on next update so all should be fine
         DoProjectileMotion pmScript = projectile.GetComponent<DoProjectileMotion>();
-        pmScript.mass = massPanel.GetComponent<Slider>().value;
-        pmScript.gravitationalAcceleration = gravityPanel.GetComponent<Slider>().value;
-        pmScript.angleOfProjection = anglePanel.GetComponent<Slider>().value;
-        pmScript.velocity = velocityPanel.GetComponent<Slider>().value;
+        pmScript.mass = massSlider.GetComponent<Slider>().value;
+        pmScript.gravitationalAcceleration = gravitySlider.GetComponent<Slider>().value;
+        pmScript.angleOfProjection = angleSlider.GetComponent<Slider>().value;
+        pmScript.velocity = velocitySlider.GetComponent<Slider>().value;
     }
 }
