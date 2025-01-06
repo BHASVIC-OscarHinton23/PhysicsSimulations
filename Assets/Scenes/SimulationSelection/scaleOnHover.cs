@@ -110,7 +110,7 @@ public class scaleOnHover : MonoBehaviour
             hovering = false;
         }
 
-        Debug.Log($"Pos({mousePosition.x},{mousePosition.y}) Range([{topLeft.x},{topRight.x}],[{topLeft.y},{bottomLeft.y}]) Hov:{hovering}");
+        //Debug.Log($"Pos({mousePosition.x},{mousePosition.y}) Range([{topLeft.x},{topRight.x}],[{topLeft.y},{bottomLeft.y}]) Hov:{hovering}");
     }
     void growInSize()
     {
