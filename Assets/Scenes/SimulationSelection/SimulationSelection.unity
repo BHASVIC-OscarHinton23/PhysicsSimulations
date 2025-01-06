@@ -4105,7 +4105,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 212809230}
         m_TargetAssemblyTypeName: SceneSwitching, Assembly-CSharp
-        m_MethodName: changeToTemplateSimulation
+        m_MethodName: changeToProjectileMotion
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

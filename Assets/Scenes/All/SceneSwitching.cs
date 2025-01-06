@@ -33,5 +33,11 @@ public class SceneSwitching : MonoBehaviour
     {
         Debug.Log("Switching scene: CircularMotion");
         SceneManager.LoadScene("CircularMotion", LoadSceneMode.Single);
-    }    
+    }
+
+    public void changeToProjectileMotion()
+    {
+        Debug.Log("Switching scene: ProjectileMotion");
+        SceneManager.LoadScene("ProjectileMotion", LoadSceneMode.Single);
+    }
 }
