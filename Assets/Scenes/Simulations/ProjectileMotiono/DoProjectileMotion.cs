@@ -47,6 +47,6 @@ public class DoProjectileMotion : MonoBehaviour
         Vector2 translation = Time.deltaTime * velocityVector;
 
         displacement += translation;
-        this.transform.Translate(displacement);
+        this.transform.Translate(translation);
     }
 }
