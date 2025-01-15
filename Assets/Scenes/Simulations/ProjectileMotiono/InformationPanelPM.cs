@@ -8,9 +8,13 @@ using UnityEngine.UI;
 
 public class InformationPanelPM : MonoBehaviour
 {
-    public GameObject throwawayProjectile;
+    // baseProjectile is the object which projectiles are copied from
+    public GameObject baseProjectile;
+
+    // projectile is the last projectile to be shot out of cannon
+    public GameObject projectile;
     public GameObject cannonBarrel;
-    public GameObject massSlider;
+    public GameObject massPanel;
     public GameObject velocitySlider;
     public GameObject gravitySlider;
     public GameObject angleSlider;
@@ -32,15 +36,15 @@ public class InformationPanelPM : MonoBehaviour
         // Create projectile
         // this.projectile is a throwaway projectile that is never used
         GameObject simulationObjects = GameObject.Find("Simulation");
-        GameObject projectile = (GameObject) Instantiate(this.throwawayProjectile, simulationObjects.transform);
+        this.projectile = (GameObject) Instantiate(this.baseProjectile, simulationObjects.transform);
 
-        projectile.transform.position = startPosition;
-        projectile.AddComponent<DoProjectileMotion>();
+        this.projectile.transform.position = startPosition;
+        this.projectile.AddComponent<DoProjectileMotion>();
 
         // Set values for PM
         // Start is called on next update so all should be fine
-        DoProjectileMotion pmScript = projectile.GetComponent<DoProjectileMotion>();
-        pmScript.mass = massSlider.GetComponent<Slider>().value;
+        DoProjectileMotion pmScript = this.projectile.GetComponent<DoProjectileMotion>();
+        pmScript.mass = massPanel.GetComponentInChildren<Slider>().value;
         pmScript.gravitationalAcceleration = gravitySlider.GetComponent<Slider>().value;
         pmScript.angleOfProjection = angleSlider.GetComponent<Slider>().value;
         pmScript.velocity = velocitySlider.GetComponent<Slider>().value;
@@ -118,7 +122,7 @@ public class InformationPanelPM : MonoBehaviour
 
     public void massSliderListener(float value)
     {
-        DoCircularMotion cmComponent = body.GetComponent<DoCircularMotion>();
+        DoCircularMotion cmComponent = this.projectile.GetComponent<DoCircularMotion>();
         GameObject slider = massPanel.transform.Find("Slider").gameObject;
         Slider sliderComponent = slider.GetComponent<Slider>();
         cmComponent.mass = sliderComponent.value;

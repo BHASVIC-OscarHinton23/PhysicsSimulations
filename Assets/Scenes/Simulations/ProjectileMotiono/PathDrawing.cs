@@ -12,10 +12,10 @@ public class PathDrawing : MonoBehaviour
         InformationPanelPM ipComponent = gameObject.GetComponent<InformationPanelPM>();
 
         // Temporarily override throwawayProjectile
-        GameObject oldTempProjectile = ipComponent.throwawayProjectile;
+        GameObject oldTempProjectile = ipComponent.baseProjectile;
 
         // Set new throwawayProjectile to invisible one.
-        ipComponent.throwawayProjectile = GameObject.Find("pathProjectile");
+        ipComponent.baseProjectile = GameObject.Find("pathProjectile");
 
         // create projectile
         ipComponent.launchButtonListener();
@@ -47,6 +47,6 @@ public class PathDrawing : MonoBehaviour
 
         // Clean up
         Destroy(pathProjectile);
-        ipComponent.throwawayProjectile = oldTempProjectile;
+        ipComponent.baseProjectile = oldTempProjectile;
     }
 }
