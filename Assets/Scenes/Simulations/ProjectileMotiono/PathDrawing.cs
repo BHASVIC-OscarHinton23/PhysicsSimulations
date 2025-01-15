@@ -18,7 +18,7 @@ public class PathDrawing : MonoBehaviour
         ipComponent.baseProjectile = GameObject.Find("pathProjectile");
 
         // create projectile
-        ipComponent.launchButtonListener();
+        ipComponent.pathDrawingProjectileCreate();
 
         // Simulate n seconds
         // 1/deltaTime is number of updates p/s

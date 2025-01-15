@@ -1451,7 +1451,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ebce09841eb334bb9bcf31dc57eda4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseProjectile: {fileID: 0}
+  baseProjectile: {fileID: 2060266644}
   projectile: {fileID: 0}
   cannonBarrel: {fileID: 1066075618}
   massPanel: {fileID: 2053750358}

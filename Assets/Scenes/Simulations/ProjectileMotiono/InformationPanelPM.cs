@@ -50,6 +50,37 @@ public class InformationPanelPM : MonoBehaviour
         pmScript.velocity = velocitySlider.GetComponent<Slider>().value;
     }
 
+    public void pathDrawingProjectileCreate()
+    {
+        Debug.Log("launch button pressed");
+
+        // Get end corners of barrel
+        Vector3[] cannonRectVertices = new Vector3[4];
+        this.cannonBarrel.GetComponent<RectTransform>().GetWorldCorners(cannonRectVertices);
+
+        Vector2 pointA = cannonRectVertices[2];
+        Vector2 pointB = cannonRectVertices[3];
+
+        // Get average of corners
+        Vector2 startPosition = (pointA + pointB) / 2;
+
+        // Create projectile
+        // this.projectile is a throwaway projectile that is never used
+        GameObject simulationObjects = GameObject.Find("Simulation");
+        GameObject projectile = (GameObject)Instantiate(this.baseProjectile, simulationObjects.transform);
+
+        projectile.transform.position = startPosition;
+        projectile.AddComponent<DoProjectileMotion>();
+
+        // Set values for PM
+        // Start is called on next update so all should be fine
+        DoProjectileMotion pmScript = projectile.GetComponent<DoProjectileMotion>();
+        pmScript.mass = massPanel.GetComponentInChildren<Slider>().value;
+        pmScript.gravitationalAcceleration = gravitySlider.GetComponent<Slider>().value;
+        pmScript.angleOfProjection = angleSlider.GetComponent<Slider>().value;
+        pmScript.velocity = velocitySlider.GetComponent<Slider>().value;
+    }
+
 
     #region Mass Listeners
 
@@ -122,10 +153,10 @@ public class InformationPanelPM : MonoBehaviour
 
     public void massSliderListener(float value)
     {
-        DoCircularMotion cmComponent = this.projectile.GetComponent<DoCircularMotion>();
+        DoProjectileMotion pmComponent = this.projectile.GetComponent<DoProjectileMotion>();
         GameObject slider = massPanel.transform.Find("Slider").gameObject;
         Slider sliderComponent = slider.GetComponent<Slider>();
-        cmComponent.mass = sliderComponent.value;
+        pmComponent.mass = sliderComponent.value;
     }
     #endregion
 
