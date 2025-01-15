@@ -1451,9 +1451,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ebce09841eb334bb9bcf31dc57eda4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwawayProjectile: {fileID: 2060266644}
+  baseProjectile: {fileID: 0}
+  projectile: {fileID: 0}
   cannonBarrel: {fileID: 1066075618}
-  massSlider: {fileID: 833009210}
+  massPanel: {fileID: 2053750358}
   velocitySlider: {fileID: 1509516840}
   gravitySlider: {fileID: 414049902}
   angleSlider: {fileID: 1102310879}
