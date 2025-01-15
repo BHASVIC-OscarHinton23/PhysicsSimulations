@@ -13,6 +13,9 @@ public class InformationPanelPM : MonoBehaviour
 
     // projectile is the last projectile to be shot out of cannon
     public GameObject projectile;
+
+    public GameObject initialVelocityPanel;
+
     public GameObject cannonBarrel;
     public GameObject massPanel;
     public GameObject velocitySlider;
@@ -159,5 +162,71 @@ public class InformationPanelPM : MonoBehaviour
         pmComponent.mass = sliderComponent.value;
     }
     #endregion
+
+    #region Initial Velocity listeners
+
+    public void updateInitialVelocityLabel(float value)
+    {
+        GameObject slider = this.initialVelocityPanel.transform.Find("Slider").gameObject;
+        GameObject textLabel = this.initialVelocityPanel.transform.Find("VariableName").gameObject;
+        TextMeshProUGUI textComponent = textLabel.GetComponent<TextMeshProUGUI>();
+        Slider sliderComponent = slider.GetComponent<Slider>();
+
+        textComponent.text = $"Start Velocity: {sliderComponent.value} m/s";
+    }
+    public void changeInitialVelocityUpperBound(string value)
+    {
+        GameObject lowerBound = this.initialVelocityPanel.transform.Find("LowerBound").gameObject;
+        GameObject upperBound = this.initialVelocityPanel.transform.Find("UpperBound").gameObject;
+        GameObject sliderObject = this.initialVelocityPanel.transform.Find("Slider").gameObject;
+        Slider slider = sliderObject.GetComponent<Slider>();
+        TMP_InputField lower = lowerBound.GetComponent<TMP_InputField>();
+        TMP_InputField upper = upperBound.GetComponent<TMP_InputField>();
+
+        float lowerValue = float.Parse(lower.text);
+        float upperValue = float.Parse(upper.text);
+
+        // Check if value is greater than maximum, or if below 0
+        // Set to 0 and return if so
+        if (upperValue <= lowerValue)
+        {
+            upper.text = $"{lowerValue + 1}";
+            slider.minValue = lowerValue + 1;
+
+            return;
+        }
+
+        // Change lower bound to what was inputted
+        slider.maxValue = upperValue;
+    }
+    public void changeInitialVelocityLowerBound(string value)
+    {
+        GameObject lowerBound = this.initialVelocityPanel.transform.Find("LowerBound").gameObject;
+        GameObject upperBound = this.initialVelocityPanel.transform.Find("UpperBound").gameObject;
+        GameObject sliderObject = this.initialVelocityPanel.transform.Find("Slider").gameObject;
+        Slider slider = sliderObject.GetComponent<Slider>();
+        TMP_InputField lower = lowerBound.GetComponent<TMP_InputField>();
+        TMP_InputField upper = upperBound.GetComponent<TMP_InputField>();
+
+        float lowerValue = float.Parse(lower.text);
+        float upperValue = float.Parse(upper.text);
+
+        // Check if value is greater than maximum, or if below 0
+        // Set to 0 and return if so
+        if (lowerValue >= upperValue || lowerValue <= 0)
+        {
+            lower.text = "0.001";
+            slider.minValue = 0.001f;
+
+            return;
+        }
+
+        // Change lower bound to what was inputted
+        slider.minValue = lowerValue;
+    }
+
+
+    #endregion
+
 
 }
