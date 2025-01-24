@@ -19,7 +19,7 @@ public class InformationPanelPM : MonoBehaviour
     public GameObject cannonBarrel;
     public GameObject massPanel;
     public GameObject velocitySlider;
-    public GameObject gravitySlider;
+    public GameObject gravityPanel;
     public GameObject angleSlider;
 
     public void launchButtonListener()
@@ -228,5 +228,68 @@ public class InformationPanelPM : MonoBehaviour
 
     #endregion
 
+    #region Gravitational Acceleration listeners
+    public void updateAccelerationLabel(float value)
+    {
+        GameObject slider = this.gravityPanel.transform.Find("Slider").gameObject;
+        GameObject textLabel = this.gravityPanel.transform.Find("VariableName").gameObject;
+        TextMeshProUGUI textComponent = textLabel.GetComponent<TextMeshProUGUI>();
+        Slider sliderComponent = slider.GetComponent<Slider>();
+
+        textComponent.text = $"g: {sliderComponent.value} m/s²";
+    }
+    public void changeAccelerationUpperBound(string value)
+    {
+        GameObject lowerBound = this.gravityPanel.transform.Find("LowerBound").gameObject;
+        GameObject upperBound = this.gravityPanel.transform.Find("UpperBound").gameObject;
+        GameObject sliderObject = this.gravityPanel.transform.Find("Slider").gameObject;
+        Slider slider = sliderObject.GetComponent<Slider>();
+        TMP_InputField lower = lowerBound.GetComponent<TMP_InputField>();
+        TMP_InputField upper = upperBound.GetComponent<TMP_InputField>();
+
+        float lowerValue = float.Parse(lower.text);
+        float upperValue = float.Parse(upper.text);
+
+        // Check if value is greater than maximum, or if below 0
+        // Set to 0 and return if so
+        if (upperValue <= lowerValue)
+        {
+            upper.text = $"{lowerValue + 1}";
+            slider.minValue = lowerValue + 1;
+
+            return;
+        }
+
+        // Change lower bound to what was inputted
+        slider.maxValue = upperValue;
+    }
+    public void changeAccelerationLowerBound(string value)
+    {
+        GameObject lowerBound = this.gravityPanel.transform.Find("LowerBound").gameObject;
+        GameObject upperBound = this.gravityPanel.transform.Find("UpperBound").gameObject;
+        GameObject sliderObject = this.gravityPanel.transform.Find("Slider").gameObject;
+        Slider slider = sliderObject.GetComponent<Slider>();
+        TMP_InputField lower = lowerBound.GetComponent<TMP_InputField>();
+        TMP_InputField upper = upperBound.GetComponent<TMP_InputField>();
+
+        float lowerValue = float.Parse(lower.text);
+        float upperValue = float.Parse(upper.text);
+
+        
+        // Check if value is greater than maximum
+        // Set to 0 and return if so
+        // slight change, allow values below 0! i think it'd be funny (i've slept 1 hour)
+        if (lowerValue >= upperValue)
+        {
+            lower.text = "0.001";
+            slider.minValue = 0.001f;
+
+            return;
+        }
+
+        // Change lower bound to what was inputted
+        slider.minValue = lowerValue;
+    }
+    #endregion
 
 }
