@@ -1305,10 +1305,10 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: InformationPanel, Assembly-CSharp
-        m_MethodName: updateMassLabel
-        m_Mode: 4
+      - m_Target: {fileID: 449029989}
+        m_TargetAssemblyTypeName: InformationPanelPM, Assembly-CSharp
+        m_MethodName: updateAccelerationLabel
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1457,7 +1457,7 @@ MonoBehaviour:
   cannonBarrel: {fileID: 1066075618}
   massPanel: {fileID: 2053750358}
   velocitySlider: {fileID: 1509516840}
-  gravitySlider: {fileID: 783666291}
+  gravityPanel: {fileID: 783666291}
   angleSlider: {fileID: 1102310879}
 --- !u!114 &449029990
 MonoBehaviour:
@@ -2329,7 +2329,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -756.10004, y: -490}
+  m_AnchoredPosition: {x: -756.1001, y: -490}
   m_SizeDelta: {x: -1909.7401, y: -1128.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &672206409
@@ -4611,10 +4611,10 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 449029983}
-        m_TargetAssemblyTypeName: InformationPanel, Assembly-CSharp
-        m_MethodName: 
-        m_Mode: 5
+      - m_Target: {fileID: 449029989}
+        m_TargetAssemblyTypeName: InformationPanelPM, Assembly-CSharp
+        m_MethodName: changeAccelerationLowerBound
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4622,7 +4622,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
   m_OnSubmit:
     m_PersistentCalls:
       m_Calls: []
@@ -5479,10 +5479,10 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: InformationPanel, Assembly-CSharp
-        m_MethodName: changeMassUpperBound
-        m_Mode: 5
+      - m_Target: {fileID: 449029989}
+        m_TargetAssemblyTypeName: InformationPanelPM, Assembly-CSharp
+        m_MethodName: changeAccelerationUpperBound
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -6929,7 +6929,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -867.99994, y: -490}
+  m_AnchoredPosition: {x: -868, y: -490}
   m_SizeDelta: {x: -1909.7401, y: -1128.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1502661378
@@ -10894,7 +10894,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -885.99994, y: -470}
+  m_AnchoredPosition: {x: -886, y: -470}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2046186812

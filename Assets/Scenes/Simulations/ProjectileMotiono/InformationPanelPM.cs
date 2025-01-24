@@ -48,7 +48,7 @@ public class InformationPanelPM : MonoBehaviour
         // Start is called on next update so all should be fine
         DoProjectileMotion pmScript = this.projectile.GetComponent<DoProjectileMotion>();
         pmScript.mass = massPanel.GetComponentInChildren<Slider>().value;
-        pmScript.gravitationalAcceleration = gravitySlider.GetComponent<Slider>().value;
+        pmScript.gravitationalAcceleration = gravityPanel.GetComponent<Slider>().value;
         pmScript.angleOfProjection = angleSlider.GetComponent<Slider>().value;
         pmScript.velocity = velocitySlider.GetComponent<Slider>().value;
     }
@@ -79,7 +79,7 @@ public class InformationPanelPM : MonoBehaviour
         // Start is called on next update so all should be fine
         DoProjectileMotion pmScript = projectile.GetComponent<DoProjectileMotion>();
         pmScript.mass = massPanel.GetComponentInChildren<Slider>().value;
-        pmScript.gravitationalAcceleration = gravitySlider.GetComponent<Slider>().value;
+        pmScript.gravitationalAcceleration = gravityPanel.GetComponent<Slider>().value;
         pmScript.angleOfProjection = angleSlider.GetComponent<Slider>().value;
         pmScript.velocity = velocitySlider.GetComponent<Slider>().value;
     }
