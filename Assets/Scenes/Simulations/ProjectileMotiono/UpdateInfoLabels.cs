@@ -6,12 +6,12 @@ using UnityEngine;
 public class UpdateInfoLabels : MonoBehaviour
 {
     // Last projectile to be launched
-    public GameObject lastProjectile = null;
+    public GameObject lastProjectile;
 
     // Update is called once per frame
     void Update()
     {
-        if (lastProjectile is null)
+        if (lastProjectile is null || lastProjectile.GetComponent<DoProjectileMotion>() == null)
         {
             return;            
         }
