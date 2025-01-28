@@ -298,7 +298,7 @@ public class InformationPanelPM : MonoBehaviour
     {
         GameObject cannon = GameObject.Find("Cannon");
 
-        cannon.transform.Rotate(0, 0, angle);
+        cannon.transform.Rotate(0, 0, (float)(angle * (Math.PI / 180)));
     }
 
     #endregion
