@@ -36,7 +36,7 @@ public class DoProjectileMotion : MonoBehaviour
         this.velocity = this.velocityVector.magnitude;
 
         // Check distance from cannon and destroy object if too far away
-        if (this.displacement.magnitude > 200)
+        if (this.displacement.magnitude > 1000)
         {
             Destroy(this);
         }
