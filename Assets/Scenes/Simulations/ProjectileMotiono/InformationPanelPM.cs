@@ -301,7 +301,7 @@ public class InformationPanelPM : MonoBehaviour
         // Reset rotation
         cannon.transform.rotation = Quaternion.Euler(0, 0, 0);
 
-        cannon.transform.Rotate(0, 0, -(float)(angle * (Math.PI / 180)));
+        cannon.transform.Rotate(0, 0, angle);
     }
 
     #endregion
