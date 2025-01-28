@@ -51,7 +51,7 @@ public class InformationPanelPM : MonoBehaviour
         pmScript.angleOfProjection = anglePanel.GetComponentInChildren<Slider>().value;
         pmScript.velocity = initialVelocityPanel.GetComponentInChildren<Slider>().value;
 
-        UpdateInfoLabels updateInfoLabelComponent = this.transform.parent.GetComponent<UpdateInfoLabels>();
+        UpdateInfoLabels updateInfoLabelComponent = this.GetComponentInParent<UpdateInfoLabels>();
         updateInfoLabelComponent.enabled = true;
         updateInfoLabelComponent.lastProjectile = this.projectile;
     }
