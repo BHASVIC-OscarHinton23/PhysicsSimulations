@@ -18,7 +18,6 @@ public class InformationPanelPM : MonoBehaviour
 
     public GameObject cannonBarrel;
     public GameObject massPanel;
-    public GameObject velocityPanel;
     public GameObject gravityPanel;
     public GameObject anglePanel;
 
@@ -292,4 +291,15 @@ public class InformationPanelPM : MonoBehaviour
     }
     #endregion
 
+    #region
+
+    // Rotate cannon to match angle
+    public void rotateCannon(float angle)
+    {
+        GameObject cannon = GameObject.Find("Cannon");
+
+        cannon.transform.Rotate(0, 0, angle);
+    }
+
+    #endregion
 }
