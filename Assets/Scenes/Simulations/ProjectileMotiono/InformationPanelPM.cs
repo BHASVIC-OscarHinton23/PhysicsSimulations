@@ -155,10 +155,13 @@ public class InformationPanelPM : MonoBehaviour
 
     public void massSliderListener(float value)
     {
-        DoProjectileMotion pmComponent = this.projectile.GetComponent<DoProjectileMotion>();
-        GameObject slider = massPanel.transform.Find("Slider").gameObject;
-        Slider sliderComponent = slider.GetComponent<Slider>();
-        pmComponent.mass = sliderComponent.value;
+        // Mass doesn't actually have any effect on the simulation, so we really don't need to update anything when
+        // the slider is used. This also fixes an error :)
+
+        //DoProjectileMotion pmComponent = this.projectile.GetComponent<DoProjectileMotion>();
+        //GameObject slider = massPanel.transform.Find("Slider").gameObject;
+        //Slider sliderComponent = slider.GetComponent<Slider>();
+        //pmComponent.mass = sliderComponent.value;
     }
     #endregion
 
