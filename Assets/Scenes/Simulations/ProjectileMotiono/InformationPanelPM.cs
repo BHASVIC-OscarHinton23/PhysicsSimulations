@@ -18,9 +18,9 @@ public class InformationPanelPM : MonoBehaviour
 
     public GameObject cannonBarrel;
     public GameObject massPanel;
-    public GameObject velocitySlider;
+    public GameObject velocityPanel;
     public GameObject gravityPanel;
-    public GameObject angleSlider;
+    public GameObject anglePanel;
 
     public void launchButtonListener()
     {
@@ -48,9 +48,9 @@ public class InformationPanelPM : MonoBehaviour
         // Start is called on next update so all should be fine
         DoProjectileMotion pmScript = this.projectile.GetComponent<DoProjectileMotion>();
         pmScript.mass = massPanel.GetComponentInChildren<Slider>().value;
-        pmScript.gravitationalAcceleration = gravityPanel.GetComponent<Slider>().value;
-        pmScript.angleOfProjection = angleSlider.GetComponent<Slider>().value;
-        pmScript.velocity = velocitySlider.GetComponent<Slider>().value;
+        pmScript.gravitationalAcceleration = gravityPanel.GetComponentInChildren<Slider>().value;
+        pmScript.angleOfProjection = anglePanel.GetComponentInChildren<Slider>().value;
+        pmScript.velocity = initialVelocityPanel.GetComponentInChildren<Slider>().value;
     }
 
     public void pathDrawingProjectileCreate()
@@ -79,9 +79,9 @@ public class InformationPanelPM : MonoBehaviour
         // Start is called on next update so all should be fine
         DoProjectileMotion pmScript = projectile.GetComponent<DoProjectileMotion>();
         pmScript.mass = massPanel.GetComponentInChildren<Slider>().value;
-        pmScript.gravitationalAcceleration = gravityPanel.GetComponent<Slider>().value;
-        pmScript.angleOfProjection = angleSlider.GetComponent<Slider>().value;
-        pmScript.velocity = velocitySlider.GetComponent<Slider>().value;
+        pmScript.gravitationalAcceleration = gravityPanel.GetComponentInChildren<Slider>().value;
+        pmScript.angleOfProjection = anglePanel.GetComponentInChildren<Slider>().value;
+        pmScript.velocity = initialVelocityPanel.GetComponentInChildren<Slider>().value;
     }
 
 

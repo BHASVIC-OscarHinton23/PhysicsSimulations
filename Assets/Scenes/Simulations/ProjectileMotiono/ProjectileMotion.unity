@@ -1456,9 +1456,9 @@ MonoBehaviour:
   initialVelocityPanel: {fileID: 470340595}
   cannonBarrel: {fileID: 1066075618}
   massPanel: {fileID: 2053750358}
-  velocitySlider: {fileID: 1509516840}
+  velocityPanel: {fileID: 0}
   gravityPanel: {fileID: 783666291}
-  angleSlider: {fileID: 1102310879}
+  anglePanel: {fileID: 2121091980}
 --- !u!114 &449029990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2329,7 +2329,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -756.1001, y: -490}
+  m_AnchoredPosition: {x: -756.10004, y: -490}
   m_SizeDelta: {x: -1909.7401, y: -1128.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &672206409
@@ -6929,7 +6929,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -868, y: -490}
+  m_AnchoredPosition: {x: -867.99994, y: -490}
   m_SizeDelta: {x: -1909.7401, y: -1128.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1502661378
@@ -10894,7 +10894,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -886, y: -470}
+  m_AnchoredPosition: {x: -885.99994, y: -470}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2046186812
@@ -11060,7 +11060,7 @@ Transform:
   m_GameObject: {fileID: 2060266644}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -22.46, z: 13.431458}
+  m_LocalPosition: {x: -91.2, y: -42.7, z: 13.431458}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
