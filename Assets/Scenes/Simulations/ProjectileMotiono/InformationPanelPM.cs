@@ -50,6 +50,10 @@ public class InformationPanelPM : MonoBehaviour
         pmScript.gravitationalAcceleration = gravityPanel.GetComponentInChildren<Slider>().value;
         pmScript.angleOfProjection = anglePanel.GetComponentInChildren<Slider>().value;
         pmScript.velocity = initialVelocityPanel.GetComponentInChildren<Slider>().value;
+
+        UpdateInfoLabels updateInfoLabelComponent = this.transform.parent.GetComponent<UpdateInfoLabels>();
+        updateInfoLabelComponent.enabled = true;
+        updateInfoLabelComponent.lastProjectile = this.projectile;
     }
 
     public void pathDrawingProjectileCreate()
@@ -294,7 +298,7 @@ public class InformationPanelPM : MonoBehaviour
     }
     #endregion
 
-    #region
+    #region Angle Listeners
 
     // Rotate cannon to match angle
     public void rotateCannon(float angle)
