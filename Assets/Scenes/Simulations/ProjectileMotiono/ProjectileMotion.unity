@@ -1380,6 +1380,7 @@ GameObject:
   - component: {fileID: 449029989}
   - component: {fileID: 449029990}
   - component: {fileID: 449029992}
+  - component: {fileID: 449029993}
   - component: {fileID: 449029991}
   m_Layer: 0
   m_Name: Global
@@ -1585,6 +1586,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numSeconds: 15
+--- !u!114 &449029993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 449029983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1855c8e9738eb9d4987e136c3df0589c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lastProjectile: {fileID: 2060266644}
 --- !u!1 &454717224
 GameObject:
   m_ObjectHideFlags: 0
