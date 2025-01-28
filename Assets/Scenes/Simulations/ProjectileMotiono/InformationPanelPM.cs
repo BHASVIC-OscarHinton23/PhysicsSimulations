@@ -304,5 +304,14 @@ public class InformationPanelPM : MonoBehaviour
         cannon.transform.Rotate(0, 0, angle);
     }
 
+    public void updateAngleLabel(float value)
+    {
+        GameObject slider = this.anglePanel.transform.Find("Slider").gameObject;
+        GameObject textLabel = this.anglePanel.transform.Find("VariableName").gameObject;
+        TextMeshProUGUI textComponent = textLabel.GetComponent<TextMeshProUGUI>();
+        Slider sliderComponent = slider.GetComponent<Slider>();
+
+        textComponent.text = $"Angle: {sliderComponent.value} degrees";
+    }
     #endregion
 }
