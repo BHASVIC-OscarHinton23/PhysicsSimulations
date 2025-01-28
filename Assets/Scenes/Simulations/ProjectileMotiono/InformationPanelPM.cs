@@ -298,7 +298,10 @@ public class InformationPanelPM : MonoBehaviour
     {
         GameObject cannon = GameObject.Find("Cannon");
 
-        cannon.transform.Rotate(0, 0, (float)(angle * (Math.PI / 180)));
+        // Reset rotation
+        cannon.transform.rotation = Quaternion.Euler(0, 0, 0);
+
+        cannon.transform.Rotate(0, 0, -(float)(angle * (Math.PI / 180)));
     }
 
     #endregion
