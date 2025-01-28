@@ -21,6 +21,8 @@ public class InformationPanelPM : MonoBehaviour
     public GameObject gravityPanel;
     public GameObject anglePanel;
 
+    float timeSinceLaunch = 0;
+
     public void launchButtonListener()
     {
         Debug.Log("launch button pressed");
@@ -51,9 +53,13 @@ public class InformationPanelPM : MonoBehaviour
         pmScript.angleOfProjection = anglePanel.GetComponentInChildren<Slider>().value;
         pmScript.velocity = initialVelocityPanel.GetComponentInChildren<Slider>().value;
 
+        // Do some info label stuff to keep track of last launched projectile
         UpdateInfoLabels updateInfoLabelComponent = this.GetComponentInParent<UpdateInfoLabels>();
         updateInfoLabelComponent.enabled = true;
         updateInfoLabelComponent.lastProjectile = this.projectile;
+
+        // Reset timer to 0 to start counting again
+        updateInfoLabelComponent.timeSinceLaunch = 0;
     }
 
     public void pathDrawingProjectileCreate()
