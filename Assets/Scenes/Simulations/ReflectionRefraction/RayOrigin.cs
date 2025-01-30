@@ -18,10 +18,19 @@ public class RayOrigin : MonoBehaviour
 
     public void FixedUpdate()
     {
+        // Move rayOrigin object to origin of ray
+        this.moveRayOriginObject();
+
         // Debug
         this.drawDirectionVector();
         drawUpLine drawUp = GetComponentInChildren<drawUpLine>();
         drawUp.origin = this.origin;
+    }
+
+    private void moveRayOriginObject()
+    {
+        GameObject rayOriginObject = GameObject.Find("rayOrigin");
+        rayOriginObject.transform.position = this.origin;
     }
 
     private void drawDirectionVector()
