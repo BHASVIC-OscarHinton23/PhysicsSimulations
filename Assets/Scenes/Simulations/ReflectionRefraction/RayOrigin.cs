@@ -28,7 +28,7 @@ public class RayOrigin : MonoBehaviour
 
         // Rotate by angle
         // See https://docs.unity3d.com/Packages/com.unity.mathematics@1.3/manual/4x4-matrices.html
-        float cosAngle = math.cos((2*math.PI) - math.radians(this.angle));
+        float cosAngle = math.cos((2 * math.PI) - math.radians(this.angle));
         float sinAngle = math.sin((2 * math.PI) - math.radians(this.angle));
         float2x2 rotationMatrix = math.float2x2(cosAngle, -sinAngle, sinAngle, cosAngle);
 
@@ -37,9 +37,14 @@ public class RayOrigin : MonoBehaviour
         Debug.Log($"Direction vector: ({up.x}, {up.y})");
 
         // Debug, draw vector
+        drawLine(this.origin, this.origin + up);
+    }
+
+    private void drawLine(Vector2 start, Vector2 end)
+    {
         LineRenderer lr = GetComponentInParent<LineRenderer>();
 
-        Vector3[] points = { origin, origin + up };
+        Vector3[] points = { start, end };
         lr.SetPositions(points);
     }
 }
