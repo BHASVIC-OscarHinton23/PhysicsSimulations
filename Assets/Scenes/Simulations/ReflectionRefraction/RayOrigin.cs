@@ -25,6 +25,17 @@ public class RayOrigin : MonoBehaviour
         this.drawDirectionVector();
         drawUpLine drawUp = GetComponentInChildren<drawUpLine>();
         drawUp.origin = this.origin;
+
+        this.testInsideHexagon();
+    }
+
+    private void testInsideHexagon()
+    {
+        GameObject hexagon = GameObject.Find("glassHexagon");
+        Vector2 deltaPosition = this.origin - (Vector2)hexagon.transform.position;
+
+        Debug.Log($"Distance to hexagon: {deltaPosition.magnitude}");
+
     }
 
     private void moveRayOriginObject()
