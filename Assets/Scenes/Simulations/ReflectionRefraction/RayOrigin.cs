@@ -26,6 +26,16 @@ public class RayOrigin : MonoBehaviour
 
     private void drawDirectionVector()
     {
+        Vector2 directionVector = getDirectionVector();
+
+        Debug.Log($"Direction vector: ({directionVector.x}, {directionVector.y})");
+
+        // Debug, draw vector
+        drawLine(this.origin, this.origin + directionVector);
+    }
+
+    private Vector2 getDirectionVector()
+    {
         Vector2 up = new float2(0, 1);
 
         // Rotate by angle
@@ -34,12 +44,7 @@ public class RayOrigin : MonoBehaviour
         float sinAngle = math.sin((2 * math.PI) - math.radians(this.angle));
         float2x2 rotationMatrix = math.float2x2(cosAngle, -sinAngle, sinAngle, cosAngle);
 
-        up = math.mul(rotationMatrix, up);
-
-        Debug.Log($"Direction vector: ({up.x}, {up.y})");
-
-        // Debug, draw vector
-        drawLine(this.origin, this.origin + up);
+        return math.mul(rotationMatrix, up);
     }
 
     private void drawLine(Vector2 start, Vector2 end)
