@@ -28,8 +28,8 @@ public class RayOrigin : MonoBehaviour
 
         // Rotate by angle
         // See https://docs.unity3d.com/Packages/com.unity.mathematics@1.3/manual/4x4-matrices.html
-        float cosAngle = math.cos(math.PI - math.radians(this.angle));
-        float sinAngle = math.sin(math.PI - math.radians(this.angle));
+        float cosAngle = math.cos((2*math.PI) - math.radians(this.angle));
+        float sinAngle = math.sin((2 * math.PI) - math.radians(this.angle));
         float2x2 rotationMatrix = math.float2x2(cosAngle, -sinAngle, sinAngle, cosAngle);
 
         up = math.mul(rotationMatrix, up);
