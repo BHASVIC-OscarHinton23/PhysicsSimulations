@@ -2436,7 +2436,7 @@ GameObject:
   - component: {fileID: 912339635}
   - component: {fileID: 912339636}
   m_Layer: 0
-  m_Name: Hexagon Flat-Top
+  m_Name: glassHexagon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2923,7 +2923,7 @@ Transform:
   m_GameObject: {fileID: 1125050155}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2, y: 0, z: -11.456391}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3961,7 +3961,7 @@ Transform:
   m_GameObject: {fileID: 1478703764}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1, y: 1, z: 11.456391}
+  m_LocalPosition: {x: -2, y: 0, z: 11.456391}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
