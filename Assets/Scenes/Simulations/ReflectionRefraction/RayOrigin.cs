@@ -20,6 +20,8 @@ public class RayOrigin : MonoBehaviour
     {
         // Debug
         this.drawDirectionVector();
+        drawUpLine drawUp = GetComponentInChildren<drawUpLine>();
+        drawUp.origin = this.origin;
     }
 
     private void drawDirectionVector()
